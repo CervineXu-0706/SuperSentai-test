@@ -1,0 +1,2160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<title>如果来到超级战队，你会成为哪位女角色？</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{overflow-x:hidden;}
+  body{
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Segoe UI",sans-serif;
+    background:
+      radial-gradient(circle at 12% 8%,rgba(255,214,235,.95),transparent 42%),
+      radial-gradient(circle at 88% 14%,rgba(226,208,255,.9),transparent 40%),
+      radial-gradient(circle at 78% 88%,rgba(206,232,255,.9),transparent 44%),
+      radial-gradient(circle at 18% 82%,rgba(255,226,244,.9),transparent 42%),
+      linear-gradient(170deg,#ffeaf5 0%,#ffdcee 26%,#f4ddff 56%,#e2ecff 82%,#f0f8ff 100%);
+    background-attachment:fixed;min-height:100vh;padding:18px 12px 96px;
+    display:flex;justify-content:center;color:#5c3b52;overflow-x:hidden;
+  }
+  .deco{position:fixed;pointer-events:none;user-select:none;z-index:0;opacity:.55;
+    filter:drop-shadow(0 4px 10px rgba(255,150,200,.35));animation:floaty 7s ease-in-out infinite;}
+  .d1{top:5%;left:4%;font-size:2.3rem;}
+  .d2{top:16%;right:5%;font-size:2.7rem;animation-delay:.9s;}
+  .d3{top:44%;left:2%;font-size:1.9rem;animation-delay:1.7s;opacity:.4;}
+  .d4{bottom:20%;right:4%;font-size:2.5rem;animation-delay:.5s;}
+  .d5{bottom:7%;left:6%;font-size:2.1rem;animation-delay:1.3s;}
+  .d6{top:68%;right:2%;font-size:1.7rem;animation-delay:2.1s;opacity:.38;}
+  @keyframes floaty{0%,100%{transform:translateY(0) rotate(0);}50%{transform:translateY(-16px) rotate(9deg);}}
+
+  .app{width:100%;max-width:860px;position:relative;z-index:2;
+    background:rgba(255,255,255,.78);border:3px solid rgba(255,255,255,.95);
+    border-radius:40px;box-shadow:0 24px 60px rgba(255,140,190,.28),0 8px 24px rgba(190,150,255,.14),inset 0 0 60px rgba(255,240,250,.6);
+    padding:22px 24px 28px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);}
+  @media(max-width:600px){.app{padding:16px 14px 22px;border-radius:30px;}}
+
+  .topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:6px;}
+  .logo{font-size:1.22rem;font-weight:900;letter-spacing:.5px;
+    background:linear-gradient(115deg,#ff7fb4,#c98bff 48%,#7fb8ff);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 2px 0 rgba(255,255,255,.9));}
+  @media(max-width:430px){.logo{font-size:.98rem;}}
+  .admin-entry{flex:none;background:linear-gradient(135deg,#ffd9ec,#e8d4ff);
+    border:2px solid #fff;border-radius:40px;padding:8px 16px;font-size:.82rem;font-weight:800;
+    color:#9b4a78;cursor:pointer;box-shadow:0 4px 0 rgba(214,150,205,.55),0 6px 14px rgba(255,150,200,.25);transition:.1s;}
+  .admin-entry:active{transform:translateY(4px);box-shadow:0 0 0 rgba(214,150,205,.55);}
+
+  .view{display:none;animation:fadeUp .32s ease;}
+  .view.active{display:block;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+
+  .hero{text-align:center;padding:16px 4px 8px;}
+  .hero .crown{font-size:2.2rem;display:block;margin-bottom:4px;filter:drop-shadow(0 4px 8px rgba(255,160,210,.45));}
+  .hero h1{font-size:1.92rem;line-height:1.34;font-weight:900;letter-spacing:.5px;
+    background:linear-gradient(110deg,#ff6fa8,#c07dff 45%,#6fb3ff);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 2px 0 rgba(255,255,255,.95));}
+  @media(max-width:600px){.hero h1{font-size:1.42rem;}}
+  @media(max-width:380px){.hero h1{font-size:1.2rem;}}
+  .hero .sub{display:inline-block;margin-top:14px;background:rgba(255,255,255,.85);
+    border:2px dashed #ffb8d9;border-radius:50px;padding:7px 22px;
+    font-size:.9rem;font-weight:700;color:#a3638c;letter-spacing:.3px;}
+  @media(max-width:380px){.hero .sub{font-size:.78rem;padding:6px 14px;}}
+
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:28px 0 12px;}
+  .big-btn{border:3px solid #fff;border-radius:60px;padding:15px 34px;font-size:1.08rem;font-weight:900;
+    cursor:pointer;transition:.1s;display:inline-flex;align-items:center;gap:8px;letter-spacing:.5px;}
+  .big-btn.primary{color:#fff;background:linear-gradient(135deg,#ff9ec8,#ff7fb4 45%,#c98bff);
+    box-shadow:0 8px 0 rgba(196,110,170,.55),0 14px 26px rgba(255,130,180,.4);}
+  .big-btn.primary:active{transform:translateY(8px);box-shadow:0 0 0 rgba(196,110,170,.55);}
+  .big-btn.blue{color:#4a5f8a;background:linear-gradient(135deg,#cfe6ff,#bcd9ff);
+    box-shadow:0 8px 0 rgba(130,170,215,.55),0 14px 26px rgba(140,180,240,.3);}
+  .big-btn.blue:active{transform:translateY(8px);box-shadow:0 0 0 rgba(130,170,215,.55);}
+  @media(max-width:420px){.big-btn{padding:13px 22px;font-size:.96rem;}}
+
+  .peek{margin-top:26px;background:rgba(255,255,255,.62);border:2px solid #fff;
+    border-radius:30px;padding:14px 16px;box-shadow:0 8px 22px rgba(255,170,215,.16);}
+  .peek h3{font-size:.95rem;color:#e074a8;margin-bottom:10px;
+    display:flex;justify-content:space-between;align-items:center;letter-spacing:.3px;}
+  .peek .more{font-size:.76rem;color:#a0769c;cursor:pointer;text-decoration:underline;font-weight:700;}
+  .chip-wrap{display:flex;flex-wrap:wrap;gap:7px;max-height:134px;overflow-y:auto;padding:7px;
+    background:rgba(255,250,253,.9);border-radius:22px;border:2px solid #ffe4f2;}
+  .chip{font-size:.75rem;font-weight:700;padding:5px 12px;border-radius:30px;border:2px solid #fff;
+    white-space:nowrap;background:#ffdcee;color:#a44a7c;}
+  .chip.fan{background:#e6d4ff;color:#6a4a9c;}
+  .chip.cadre{background:#d4e8ff;color:#3f6a96;}
+
+  .quiz-top{display:flex;justify-content:space-between;align-items:center;gap:10px;
+    background:rgba(255,255,255,.8);border:2px solid #fff;border-radius:40px;padding:9px 20px;
+    margin-bottom:14px;font-weight:800;font-size:.86rem;color:#a3638c;
+    box-shadow:0 4px 14px rgba(255,170,215,.16);}
+  .bar{height:10px;background:#ffe4f2;border-radius:20px;overflow:hidden;margin-bottom:20px;
+    border:2px solid #fff;box-shadow:inset 0 2px 6px rgba(230,150,195,.2);}
+  .bar>i{display:block;height:100%;width:0%;border-radius:20px;
+    background:linear-gradient(90deg,#ffa6cc,#d9a3ff 50%,#9ecbff);
+    transition:width .35s cubic-bezier(.4,0,.2,1);box-shadow:0 0 12px rgba(255,160,210,.7);}
+  .q-text{font-size:1.1rem;font-weight:800;line-height:1.6;color:#54344c;
+    background:rgba(255,255,255,.94);border-left:7px solid #ff9ec8;border-radius:22px;
+    padding:16px 18px;margin-bottom:20px;box-shadow:0 6px 0 rgba(255,225,242,.9),0 10px 24px rgba(255,170,215,.16);}
+  @media(max-width:600px){.q-text{font-size:.99rem;padding:14px 16px;}}
+
+  .options{display:flex;flex-direction:column;gap:11px;margin-bottom:22px;}
+  .option{display:flex;align-items:flex-start;gap:11px;background:rgba(255,255,255,.94);
+    border:2.5px solid #ffe1ef;border-radius:26px;padding:13px 18px;font-size:.95rem;font-weight:700;
+    color:#5c3b52;cursor:pointer;box-shadow:0 4px 0 rgba(255,232,245,.9),0 6px 16px rgba(255,180,220,.12);
+    transition:.14s;line-height:1.5;}
+  .option:hover{background:#fffafd;border-color:#ffc2de;transform:translateY(-1px);}
+  .option .mark{flex:none;width:26px;height:26px;border-radius:50%;
+    background:linear-gradient(135deg,#ffe0f0,#ffd0e8);color:#c96a9c;
+    display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:900;border:2px solid #fff;}
+  .option.sel{background:linear-gradient(135deg,#ffd9ec,#f0dcff);border-color:#ff8fbf;
+    box-shadow:0 4px 0 rgba(230,160,205,.6),0 8px 22px rgba(255,140,190,.3);transform:translateY(-1px);}
+  .option.sel .mark{background:linear-gradient(135deg,#ff8fbf,#c98bff);color:#fff;}
+  .option.sel-multi{background:linear-gradient(135deg,#dfeaff,#e8dcff);border-color:#9fb8ff;
+    box-shadow:0 4px 0 rgba(150,175,230,.55);}
+  .option.sel-multi .mark{background:linear-gradient(135deg,#8fb4ff,#a98bff);color:#fff;}
+
+  .nav{display:flex;gap:12px;}
+  .nav-btn{flex:1;text-align:center;border:3px solid #fff;border-radius:44px;padding:13px 10px;
+    font-size:1rem;font-weight:900;cursor:pointer;color:#7a4a70;letter-spacing:.4px;
+    background:linear-gradient(135deg,#e4f0ff,#dce6ff);box-shadow:0 6px 0 rgba(150,175,220,.5);transition:.1s;}
+  .nav-btn:active{transform:translateY(6px);box-shadow:0 0 0 rgba(150,175,220,.5);}
+  .nav-btn:disabled{opacity:.4;pointer-events:none;}
+  .nav-btn.go{color:#fff;background:linear-gradient(135deg,#ffa0c8,#ff7fb4 50%,#c98bff);
+    box-shadow:0 6px 0 rgba(196,110,170,.55);}
+  .nav-btn.go:active{box-shadow:0 0 0 rgba(196,110,170,.55);}
+  .multi-tip{font-size:.79rem;color:#b07a9c;font-weight:700;margin:-10px 0 14px;text-align:center;}
+  .quiz-back{width:100%;margin-top:12px;border:3px solid #fff;border-radius:44px;padding:12px 10px;
+    font-size:.94rem;font-weight:900;cursor:pointer;color:#8a4a78;
+    background:linear-gradient(135deg,#ffe0f0,#ffd4ea);box-shadow:0 6px 0 rgba(214,150,205,.5);transition:.1s;}
+  .quiz-back:active{transform:translateY(6px);box-shadow:0 0 0 rgba(214,150,205,.5);}
+
+  .result{background:linear-gradient(180deg,rgba(255,250,253,.97),rgba(255,244,250,.97));
+    border:4px solid #fff;border-radius:36px;padding:26px 20px;text-align:center;
+    box-shadow:0 18px 44px rgba(255,150,200,.24),inset 0 0 0 3px rgba(255,230,245,.9);}
+  .res-img{width:148px;height:148px;margin:0 auto 10px;border-radius:50%;overflow:hidden;
+    background:linear-gradient(145deg,#ffe4f3,#f0dcff 55%,#dcecff);border:5px solid #fff;
+    box-shadow:0 12px 30px rgba(255,150,210,.4),inset 0 0 24px rgba(255,255,255,.8);
+    display:flex;align-items:center;justify-content:center;font-size:4.1rem;position:relative;}
+  .res-img::after{content:"";position:absolute;inset:-8px;border-radius:50%;
+    border:2px dashed rgba(255,160,210,.55);animation:spin 22s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .res-img img{width:100%;height:100%;object-fit:cover;}
+  .res-name{font-size:1.7rem;font-weight:900;margin:8px 0 2px;
+    background:linear-gradient(115deg,#ff6fa8,#c07dff 50%,#6fb3ff);
+    -webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:.5px;}
+  .res-real{font-size:.82rem;color:#a3759c;font-weight:700;margin-bottom:8px;}
+  .res-series{display:inline-block;font-size:.78rem;font-weight:800;padding:5px 16px;border-radius:30px;
+    background:linear-gradient(135deg,#ffe0f0,#e8dcff);color:#96538a;margin-bottom:6px;
+    border:2px solid #fff;box-shadow:0 3px 10px rgba(255,170,215,.3);}
+  .res-cat{display:inline-block;font-size:.72rem;font-weight:800;padding:4px 14px;border-radius:30px;
+    background:#fff;color:#9b6a96;margin:0 0 12px 6px;border:2px solid #ffe4f2;}
+  .res-desc{background:rgba(255,255,255,.95);border:2px solid #ffdcea;border-radius:24px;
+    padding:16px 18px;font-size:.94rem;line-height:1.85;color:#5c3b52;text-align:left;margin:10px 0 18px;
+    box-shadow:0 6px 18px rgba(255,180,220,.14);}
+  .res-tags{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:16px;}
+  .res-tag{font-size:.73rem;font-weight:800;padding:5px 14px;border-radius:30px;
+    background:linear-gradient(135deg,#ffe6f4,#f2e4ff);color:#a0568e;border:2px solid #fff;
+    box-shadow:0 3px 8px rgba(255,170,215,.22);}
+  .res-actions{display:flex;flex-direction:column;gap:10px;}
+
+  .roster-head{display:flex;justify-content:space-between;align-items:center;gap:10px;
+    margin-bottom:12px;flex-wrap:wrap;}
+  .roster-head h2{font-size:1.08rem;color:#e074a8;letter-spacing:.3px;}
+  .roster-head .cnt{font-size:.76rem;font-weight:800;color:#a3759c;background:rgba(255,255,255,.9);
+    padding:5px 14px;border-radius:30px;border:2px solid #fff;box-shadow:0 3px 10px rgba(255,170,215,.2);}
+  .filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+  .filter-btn{border:2px solid #fff;border-radius:30px;padding:7px 15px;font-size:.78rem;font-weight:800;
+    cursor:pointer;background:rgba(255,255,255,.85);color:#9b6a96;
+    box-shadow:0 3px 0 rgba(225,180,215,.5);transition:.1s;}
+  .filter-btn:active{transform:translateY(3px);box-shadow:0 0 0 rgba(225,180,215,.5);}
+  .filter-btn.on{background:linear-gradient(135deg,#ffb4d8,#d9a3ff);color:#fff;
+    box-shadow:0 3px 0 rgba(190,120,180,.55);}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:11px;
+    max-height:60vh;overflow-y:auto;padding:8px;background:rgba(255,252,254,.85);
+    border-radius:26px;border:2px solid #fff;box-shadow:inset 0 2px 14px rgba(255,200,230,.22);}
+  @media(max-width:420px){.grid{grid-template-columns:repeat(auto-fill,minmax(94px,1fr));gap:8px;}}
+  .card{background:linear-gradient(180deg,#fff,rgba(255,250,253,.98));
+    border:2.5px solid #fff;border-radius:22px;padding:10px 7px;text-align:center;
+    border-top:5px solid var(--c,#ffa6cc);box-shadow:0 5px 14px rgba(255,170,215,.16);
+    transition:transform .14s,box-shadow .14s;}
+  .card:hover{transform:translateY(-4px);box-shadow:0 10px 22px rgba(255,150,205,.28);}
+  .card .ph{width:64px;height:64px;margin:0 auto 7px;border-radius:50%;overflow:hidden;
+    background:linear-gradient(145deg,#ffe8f6,#f2e2ff);border:3px solid #fff;
+    display:flex;align-items:center;justify-content:center;font-size:1.85rem;
+    box-shadow:0 5px 12px rgba(255,170,215,.28);}
+  .card .ph img{width:100%;height:100%;object-fit:cover;}
+  .card .nm{font-size:.77rem;font-weight:900;line-height:1.28;color:#54344c;word-break:break-all;}
+  .card .sr{font-size:.62rem;font-weight:800;margin-top:4px;padding:2px 8px;border-radius:20px;
+    display:inline-block;background:#fff0f8;color:#a3759c;}
+  .card .tg{font-size:.6rem;color:#a58c9e;margin-top:4px;line-height:1.35;overflow:hidden;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+  @media(max-width:420px){
+    .card .ph{width:52px;height:52px;font-size:1.5rem;}
+    .card .nm{font-size:.7rem;}
+    .card .sr{font-size:.57rem;}
+    .card .tg{font-size:.55rem;}
+  }
+
+  .admin-box{background:rgba(255,252,254,.95);border:3px solid #ffe4f2;border-radius:28px;
+    padding:16px;max-height:66vh;overflow-y:auto;}
+  .admin-head{display:flex;justify-content:space-between;align-items:center;gap:10px;
+    margin-bottom:12px;flex-wrap:wrap;}
+  .admin-head h2{font-size:1.05rem;color:#e074a8;}
+  .head-btns{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+  .save-img-btn{background:linear-gradient(135deg,#ffc2de,#e0b8ff);border:2px solid #fff;
+    border-radius:40px;padding:9px 16px;font-size:.8rem;font-weight:900;color:#8a3f72;
+    cursor:pointer;box-shadow:0 4px 0 rgba(200,130,180,.5);transition:.1s;}
+  .save-img-btn:active{transform:translateY(4px);box-shadow:0 0 0 rgba(200,130,180,.5);}
+  .save-img-btn.has-draft{background:linear-gradient(135deg,#ffd9a8,#ffc2a8);color:#8a4a2a;
+    box-shadow:0 4px 0 rgba(200,150,110,.55);animation:pulse 1.1s infinite;}
+  @keyframes pulse{0%,100%{filter:brightness(1);}50%{filter:brightness(1.14);}}
+
+  .add-form{display:grid;grid-template-columns:1fr 1fr;gap:8px;background:rgba(255,240,249,.9);
+    border-radius:22px;padding:12px;margin-bottom:14px;border:2px solid #fff;}
+  .add-form input[type=text],.add-form select{width:100%;padding:9px 13px;border-radius:30px;
+    border:2px solid #ffd6ea;font-size:.83rem;outline:none;background:#fff;color:#5c3b52;font-family:inherit;}
+  .add-form input[type=text]:focus,.add-form select:focus{border-color:#ff9ec8;}
+  .add-form .file-line{grid-column:1/-1;display:flex;align-items:center;gap:8px;font-size:.76rem;
+    color:#a3759c;font-weight:700;flex-wrap:wrap;}
+  .add-form .file-line input[type=file]{font-size:.74rem;max-width:100%;}
+  .add-form .add-row{grid-column:1/-1;display:flex;gap:8px;}
+  .add-form button{flex:1;border:none;border-radius:30px;padding:10px;font-weight:900;font-size:.88rem;
+    cursor:pointer;background:linear-gradient(135deg,#c8f0d8,#a8e6c0);color:#2a5c3a;
+    box-shadow:0 4px 0 rgba(110,180,140,.55);transition:.1s;}
+  .add-form button:active{transform:translateY(4px);box-shadow:0 0 0 rgba(110,180,140,.55);}
+  @media(max-width:520px){.add-form{grid-template-columns:1fr;}}
+
+  .table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:20px;}
+  table.admin{width:100%;min-width:600px;border-collapse:collapse;font-size:.78rem;
+    background:#fff;border-radius:20px;overflow:hidden;}
+  table.admin th{background:linear-gradient(135deg,#ffc2de,#e0b8ff);color:#7a3f68;
+    padding:9px 6px;font-weight:900;font-size:.75rem;position:sticky;top:0;z-index:2;white-space:nowrap;}
+  table.admin td{padding:7px 6px;border-bottom:1px solid #ffeef7;text-align:center;vertical-align:middle;}
+  table.admin tr:last-child td{border-bottom:none;}
+  table.admin .th{width:42px;height:42px;border-radius:50%;overflow:hidden;
+    background:linear-gradient(145deg,#ffe8f6,#f2e2ff);display:flex;align-items:center;justify-content:center;
+    font-size:1.1rem;margin:0 auto;border:2px solid #fff;position:relative;}
+  table.admin .th img{width:100%;height:100%;object-fit:cover;}
+  .draft-badge{position:absolute;top:-6px;right:-14px;background:#ff7fb4;color:#fff;font-size:.52rem;
+    padding:1px 5px;border-radius:10px;font-weight:800;border:2px solid #fff;white-space:nowrap;}
+  .cell-nm{text-align:left!important;font-weight:800;color:#54344c;max-width:150px;word-break:break-all;}
+  .cell-nm small{display:block;font-weight:600;color:#a58c9e;font-size:.66rem;margin-top:2px;}
+  .pill{font-size:.63rem;padding:2px 8px;border-radius:20px;background:#fff0f8;color:#a3759c;
+    font-weight:800;white-space:nowrap;}
+  .op-cell{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;}
+  .mini-btn{border:none;border-radius:20px;padding:5px 10px;font-size:.66rem;font-weight:900;
+    cursor:pointer;transition:.1s;white-space:nowrap;}
+  .mini-btn.img{background:#d4e8ff;color:#3f6a96;box-shadow:0 3px 0 #a8c8e8;}
+  .mini-btn.edit{background:#ffe4b8;color:#8a651f;box-shadow:0 3px 0 #e0c078;}
+  .mini-btn.del{background:#ffc8d4;color:#8a3a4a;box-shadow:0 3px 0 #e8a0b0;}
+  .mini-btn:active{transform:translateY(3px);box-shadow:0 0 0 transparent;}
+  @media(max-width:600px){
+    .mini-btn{font-size:.62rem;padding:5px 8px;}
+    table.admin th,table.admin td{padding:7px 5px;}
+  }
+  .hint{font-size:.69rem;color:#b393a8;margin-top:10px;line-height:1.6;}
+
+  .modal{position:fixed;inset:0;background:rgba(110,60,95,.3);
+    backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
+    display:none;align-items:center;justify-content:center;z-index:999;padding:20px;}
+  .modal.on{display:flex;}
+  .modal-box{background:linear-gradient(180deg,#fffafd,#fff4fa);
+    border:5px solid #fff;border-radius:36px;padding:28px 26px;width:100%;max-width:380px;
+    box-shadow:0 28px 70px rgba(150,70,120,.28),inset 0 0 0 3px rgba(255,235,247,.9);
+    text-align:center;animation:pop .24s cubic-bezier(.34,1.56,.64,1);max-height:92vh;overflow-y:auto;}
+  @media(max-width:440px){.modal-box{padding:22px 18px;border-radius:28px;}}
+  @keyframes pop{from{transform:scale(.9);opacity:0;}to{transform:scale(1);opacity:1;}}
+  .modal-box h2{color:#e074a8;font-size:1.28rem;margin-bottom:16px;letter-spacing:.3px;}
+  .modal-box input,.modal-box select{width:100%;padding:12px 18px;margin:7px 0;
+    border:2.5px solid #ffd6ea;border-radius:40px;font-size:.93rem;outline:none;background:#fff;
+    color:#5c3b52;font-family:inherit;}
+  .modal-box input:focus,.modal-box select:focus{border-color:#ff9ec8;}
+  .modal-box label{display:block;text-align:left;font-size:.76rem;font-weight:800;color:#a3759c;
+    margin:8px 0 0 10px;}
+  .modal-box textarea{width:100%;padding:12px 16px;margin:7px 0 0;border:2.5px solid #ffd6ea;
+    border-radius:20px;font-size:.9rem;outline:none;background:#fff;min-height:84px;
+    resize:vertical;font-family:inherit;line-height:1.6;color:#5c3b52;}
+  .modal-box textarea:focus{border-color:#ff9ec8;}
+  .modal-actions{display:flex;gap:10px;margin-top:16px;}
+  .modal-actions button{flex:1;padding:12px;border:none;border-radius:40px;font-weight:900;font-size:.93rem;
+    cursor:pointer;transition:.1s;}
+  .modal-actions .cancel{background:#efe6ec;color:#7a5f72;box-shadow:0 4px 0 #cfbfc8;}
+  .modal-actions .ok{background:linear-gradient(135deg,#ffa0c8,#c98bff);color:#fff;
+    box-shadow:0 4px 0 rgba(180,110,170,.6);}
+  .modal-actions button:active{transform:translateY(4px);box-shadow:0 0 0 transparent;}
+
+  .settings-fab{position:fixed;left:18px;bottom:18px;z-index:800;width:54px;height:54px;border-radius:50%;
+    background:linear-gradient(145deg,#fff,#fff4fa);border:3px solid #fff;
+    box-shadow:0 6px 0 rgba(220,160,200,.5),0 12px 24px rgba(200,120,170,.24);
+    display:flex;align-items:center;justify-content:center;font-size:1.45rem;cursor:pointer;
+    user-select:none;transition:.1s;}
+  .settings-fab:active{transform:translateY(4px);box-shadow:0 2px 0 rgba(220,160,200,.5);}
+  .settings-panel{position:fixed;left:18px;bottom:86px;z-index:801;width:286px;max-width:calc(100vw - 36px);
+    background:linear-gradient(180deg,#fffafd,#fff4fa);border:4px solid #fff;border-radius:26px;
+    box-shadow:0 22px 50px rgba(150,70,120,.24);padding:16px 18px 14px;display:none;animation:pop .2s ease;}
+  .settings-panel.on{display:block;}
+  .settings-panel h3{font-size:.96rem;color:#e074a8;margin-bottom:6px;}
+  .settings-panel .bgnm{font-size:.64rem;color:#a58c9e;font-weight:700;margin-bottom:12px;line-height:1.4;}
+  .set-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:10px 0;}
+  .set-row span.lb{font-size:.82rem;font-weight:800;color:#7a5f72;}
+  .set-row input[type=range]{flex:1;accent-color:#ff8fbf;height:6px;cursor:pointer;max-width:118px;}
+  .switch{position:relative;display:inline-block;width:46px;height:26px;flex:none;}
+  .switch input{opacity:0;width:0;height:0;}
+  .switch .sl{position:absolute;inset:0;cursor:pointer;background:#e2d4dd;border-radius:30px;
+    transition:.22s;border:2px solid #fff;}
+  .switch .sl::before{content:'';position:absolute;width:18px;height:18px;left:2px;top:2px;background:#fff;
+    border-radius:50%;transition:.22s;box-shadow:0 2px 5px rgba(0,0,0,.18);}
+  .switch input:checked + .sl{background:linear-gradient(135deg,#ffa6cc,#c98bff);}
+  .switch input:checked + .sl::before{transform:translateX(20px);}
+  .set-close{width:100%;margin-top:10px;border:none;border-radius:30px;padding:9px;
+    background:linear-gradient(135deg,#ffd9ec,#e8d4ff);color:#8a3f72;font-weight:900;font-size:.83rem;
+    cursor:pointer;box-shadow:0 4px 0 rgba(200,140,190,.5);transition:.1s;}
+  .set-close:active{transform:translateY(4px);box-shadow:0 0 0 rgba(200,140,190,.5);}
+
+  ::-webkit-scrollbar{width:7px;height:7px;}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#ffb8d8,#d8b8ff);border-radius:10px;}
+  ::-webkit-scrollbar-track{background:#fff4fa;border-radius:10px;}
+</style>
+</head>
+<body>
+
+<div class="deco d1">🌸</div>
+<div class="deco d2">✨</div>
+<div class="deco d3">🦋</div>
+<div class="deco d4">💗</div>
+<div class="deco d5">🌙</div>
+<div class="deco d6">🎀</div>
+
+<div class="app">
+  <div class="topbar">
+    <div class="logo">✧ 超级战队 · 少女命运测试 ✧</div>
+    <button class="admin-entry" id="adminEntryBtn">👑 管理员</button>
+  </div>
+
+  <div class="view active" id="homeView">
+    <div class="hero">
+      <span class="crown">👑</span>
+      <h1>如果来到超级战队<br>你会成为哪位女角色？</h1>
+      <div class="sub">25 道题 · 113 题超大题库 · 全员均有机会</div>
+    </div>
+    <div class="hero-actions">
+      <button class="big-btn primary" id="startBtn">🌸 开始测试</button>
+      <button class="big-btn blue" id="rosterBtn">📖 查看图鉴</button>
+    </div>
+    <div class="peek">
+      <h3><span>✨ 已收录的女孩子们</span><span class="more" id="peekMore">查看全部 ›</span></h3>
+      <div class="chip-wrap" id="peekWrap"></div>
+    </div>
+  </div>
+
+  <div class="view" id="quizView">
+    <div class="quiz-top">
+      <span id="progressText">第 1 / 25 题</span>
+      <span id="typeTag">单选题</span>
+    </div>
+    <div class="bar"><i id="progressBar"></i></div>
+    <div class="q-text" id="qText">加载中…</div>
+    <div class="options" id="options"></div>
+    <div class="multi-tip" id="multiTip" style="display:none">💡 多选题：可以点选多个选项，选好后点「下一题」</div>
+    <div class="nav">
+      <button class="nav-btn" id="prevBtn">◀ 上一题</button>
+      <button class="nav-btn go" id="nextBtn">下一题 ▶</button>
+    </div>
+    <button class="quiz-back" id="quizBackBtn">🏠 返回主页</button>
+  </div>
+
+  <div class="view" id="resultView">
+    <div class="result">
+      <div class="res-img" id="resImg">🌷</div>
+      <div class="res-name" id="resName">—</div>
+      <div class="res-real" id="resReal"></div>
+      <div>
+        <span class="res-series" id="resSeries">—</span>
+        <span class="res-cat" id="resCat"></span>
+      </div>
+      <div class="res-tags" id="resTags"></div>
+      <div class="res-desc" id="resDesc"></div>
+      <div class="res-actions">
+        <button class="big-btn primary" id="againBtn">🔄 再测一次</button>
+        <button class="big-btn blue" id="homeBtn">🏠 返回主页</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="view" id="rosterView">
+    <div class="roster-head">
+      <h2>📚 全角色图鉴</h2>
+      <span class="cnt" id="rosterCount">共 0 位</span>
+      <button class="nav-btn" style="flex:none;padding:9px 20px;font-size:.86rem" id="rosterBack">返回</button>
+    </div>
+    <div class="filter-row" id="filterRow">
+      <button class="filter-btn on" data-cat="全部">✨ 全部</button>
+      <button class="filter-btn" data-cat="女战士">🌸 女战士</button>
+      <button class="filter-btn" data-cat="女性反派">🌙 女性反派</button>
+      <button class="filter-btn" data-cat="女干部">🦋 女干部</button>
+    </div>
+    <div class="grid" id="rosterGrid"></div>
+  </div>
+
+  <div class="view" id="adminView">
+    <div class="admin-box">
+      <div class="admin-head">
+        <h2>👑 角色数据库管理</h2>
+        <div class="head-btns">
+          <button class="save-img-btn" id="saveImgBtn">💾 保存图片修改</button>
+          <button class="nav-btn" style="flex:none;padding:9px 18px;font-size:.82rem" id="adminLogout">退出</button>
+        </div>
+      </div>
+      <div class="add-form">
+        <input type="text" id="newName" placeholder="角色名（必填）">
+        <input type="text" id="newSeries" placeholder="战队/作品（必填）">
+        <input type="text" id="newReal" placeholder="变身者/本名（选填）" style="grid-column:1/-1">
+        <input type="text" id="newTag" placeholder="性格/经历速写（选填）" style="grid-column:1/-1">
+        <select id="newCat" style="grid-column:1/-1">
+          <option value="女战士">女战士</option>
+          <option value="女性反派">女性反派</option>
+          <option value="女干部">女干部</option>
+        </select>
+        <div class="file-line">
+          <span>🖼️ 图片：</span>
+          <input type="file" id="newImgFile" accept="image/png,image/jpeg,image/webp,image/gif">
+          <span id="newImgState" style="color:#3a8a5a">未选择</span>
+        </div>
+        <div class="add-row">
+          <button id="addBtn">➕ 添加角色</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="admin">
+          <thead><tr><th>图</th><th>角色</th><th>分类</th><th>操作</th></tr></thead>
+          <tbody id="adminTbody"></tbody>
+        </table>
+      </div>
+      <div class="hint">
+        💡 点击「图片」选择本地文件后，表格会显示预览和 <b>待保存</b> 徽章，确认后点击 <b>💾 保存图片修改</b> 才会正式更新。<br>
+        ✏️ 点击「编辑」可修改角色名、战队、本名与人物介绍，保存后立即生效。<br>
+        ⚠️ 数据保存在浏览器 localStorage，清理缓存会丢失。
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="settings-fab" id="settingsFab">⚙️</div>
+<div class="settings-panel" id="settingsPanel">
+  <h3>🔊 声音设置</h3>
+  <div class="bgnm">BGM：梦幻八音盒合成版</div>
+  <div class="set-row"><span class="lb">背景音乐</span>
+    <label class="switch"><input type="checkbox" id="bgmToggle" checked><span class="sl"></span></label></div>
+  <div class="set-row"><span class="lb">音量</span><input type="range" id="bgmVol" min="0" max="100" value="30"></div>
+  <div class="set-row"><span class="lb">点击音效</span>
+    <label class="switch"><input type="checkbox" id="sfxToggle" checked><span class="sl"></span></label></div>
+  <div class="set-row"><span class="lb">音量</span><input type="range" id="sfxVol" min="0" max="100" value="55"></div>
+  <button class="set-close" id="setClose">关闭</button>
+</div>
+
+<div class="modal" id="loginModal">
+  <div class="modal-box">
+    <h2>🔐 管理员登录</h2>
+    <input type="text" id="admUser" placeholder="管理员账号" autocomplete="off" autocapitalize="off" spellcheck="false">
+    <input type="password" id="admPass" placeholder="管理员密码" autocomplete="off">
+    <div class="modal-actions">
+      <button class="cancel" id="loginCancel">取消</button>
+      <button class="ok" id="loginOk">登录</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="editModal">
+  <div class="modal-box">
+    <h2>✏️ 编辑角色</h2>
+    <label>角色名</label>
+    <input type="text" id="editName" placeholder="角色名" maxlength="40">
+    <label>战队 / 作品</label>
+    <input type="text" id="editSeries" placeholder="战队 / 作品" maxlength="40">
+    <label>变身者 / 本名</label>
+    <input type="text" id="editReal" placeholder="变身者 / 本名" maxlength="40">
+    <label>人物介绍 / 备注</label>
+    <textarea id="editTag" placeholder="性格、经历、代表作等" maxlength="300"></textarea>
+    <div class="modal-actions">
+      <button class="cancel" id="editCancel">取消</button>
+      <button class="ok" id="editSave">保存</button>
+    </div>
+  </div>
+</div>
+
+<input type="file" id="hiddenFile" accept="image/png,image/jpeg,image/webp,image/gif" style="display:none">
+
+<script>
+(function(){
+'use strict';
+
+/* ============================================================
+   1. 角色数据库（76 位：女战士 55 / 女性反派 8 / 女干部 13）
+   ============================================================ */
+var DEFAULT_CHARS = [
+  /* ---------- 女战士 55 ---------- */
+  {name:"桃连者",series:"秘密战队五连者",realName:"佩姬松山",category:"女战士",emoji:"🌸",traits:["智慧","独立"],tag:"战队首位女性，瑞日混血，擅长武器开发"},
+  {name:"红心Q",series:"JAKQ电击队",realName:"凯伦水木",category:"女战士",emoji:"💔",traits:["坚强","执念"],tag:"磁力改造人，原麻药取缔刑事，遭报复失去双腕与父亲后接受改造；擅长变装与空手道"},
+  {name:"美国小姐",series:"战斗狂热J",realName:"黛安·马丁",category:"女战士",emoji:"🗽",traits:["冷静","认真"],tag:"FBI探员，沉着冷静又饱含激情，有严重洁癖"},
+  {name:"美国小姐Ⅱ",series:"战斗狂热J",realName:"玛丽亚",category:"女战士",emoji:"🏊",traits:["元气","好胜"],tag:"二代，活跃且行动力更强，精通泳术与新体操"},
+  {name:"电磁粉红",series:"电子战队电磁人",realName:"大原小百合",category:"女战士",emoji:"🎾",traits:["元气","温柔"],tag:"活泼开朗、才貌双全，放弃网球冠军梦加入战队"},
+  {name:"风镜粉红",series:"大战队风镜V",realName:"小泉美佳",category:"女战士",emoji:"🤸",traits:["温柔","坚强"],tag:"温柔微笑的体操选手，意志坚强，水中战较弱"},
+  {name:"炸药粉红",series:"科学战队炸药人",realName:"丽",category:"女战士",emoji:"🤺",traits:["智慧","温柔"],tag:"西洋剑高手，研究动物语言，对受害者共情落泪"},
+  {name:"生化黄",series:"超电子生化人",realName:"小泉美佳",category:"女战士",emoji:"📷",traits:["独立","坚强"],tag:"女摄影师，个性强硬独行，继承亡兄遗志；第10集战死"},
+  {name:"生化黄Ⅱ",series:"超电子生化人",realName:"早濑纯",category:"女战士",emoji:"🏹",traits:["好胜","元气"],tag:"射箭选手，开朗不认输，好奇心旺盛"},
+  {name:"生化粉红",series:"超电子生化人",realName:"17岁女大学生",category:"女战士",emoji:"💗",traits:["温柔","智慧"],tag:"外表大小姐，实则细心温柔，对敌人也一视同仁"},
+  {name:"变化凤凰",series:"电击战队变化人",realName:"20岁",category:"女战士",emoji:"🐦",traits:["天真","元气"],tag:"天真烂漫但行动力强，直率性格常让队友头疼；初期白色女性战士"},
+  {name:"白天鹅",series:"鸟人战队喷射人",realName:"鹿鸣馆香",category:"女战士",emoji:"🦢",traits:["优雅","温柔"],tag:"大小姐气质，优雅但初期战斗力偏弱，寻找自我定位"},
+  {name:"翼龙连者",series:"恐龙战队兽连者",realName:"芽衣",category:"女战士",emoji:"🦕",traits:["温柔","坚强"],tag:"战队初期唯一女性，温柔但意志坚定"},
+  {name:"白忍者",series:"忍者战队隐连者",realName:"鹤姬",category:"女战士",emoji:"🥷",traits:["冷静","认真"],tag:"忍者世家出身，冷静沉着"},
+  {name:"王粉红",series:"超力战队王连者",realName:"桃子",category:"女战士",emoji:"🍑",traits:["社交","元气"],tag:"活泼开朗，团队润滑剂"},
+  {name:"粉红车手",series:"激走战队车连者",realName:"佐奈特",category:"女战士",emoji:"🏎️",traits:["元气","好胜"],tag:"元气、直球"},
+  {name:"百万粉红",series:"电磁战队百万连者",realName:"未来",category:"女战士",emoji:"💫",traits:["温柔","坚强"],tag:"温柔但关键时刻可靠"},
+  {name:"百万黄",series:"电磁战队百万连者",realName:"千里",category:"女战士",emoji:"📷",traits:["智慧","认真","执念"],tag:"梦想成为专业摄影师，诸星高中数码研究社成员；成绩保持数十名内的才女，队员中的副队长，被美久称作千里学姐；对耕一郎情有独钟；前额象征是数码相机，能望远搜索人和事物，还能透视墙壁"},
+  {name:"银河粉红",series:"星兽战队银河人",realName:"沙耶",category:"女战士",emoji:"⭐",traits:["温柔","天真"],tag:"温柔善良，与自然/星兽亲近"},
+  {name:"GoPink",series:"救急战队GOGO V",realName:"祭",category:"女战士",emoji:"🚑",traits:["认真","坚强"],tag:"认真、责任感强"},
+  {name:"时间粉红",series:"未来战队时连者",realName:"尤里",category:"女战士",emoji:"⏰",traits:["冷静","智慧"],tag:"来自30世纪的刑警，冷静专业"},
+  {name:"牙吠白",series:"百兽战队牙吠连者",realName:"大河冴",category:"女战士",emoji:"🤍",traits:["天真","优雅"],tag:"梦想被白马王子求婚，战队唯一女战士"},
+  {name:"破里剑蓝",series:"忍风战队破里剑者",realName:"野乃七海",category:"女战士",emoji:"💙",traits:["元气","社交"],tag:"明朗活泼，忍风馆出身"},
+  {name:"暴连黄",series:"爆龙战队暴连者",realName:"树兰",category:"女战士",emoji:"🦖",traits:["温柔","坚强"],tag:"战队唯一女性，温柔却藏着坚强"},
+  {name:"刑事黄",series:"特搜战队刑事连者",realName:"礼纹茉莉花",category:"女战士",emoji:"💛",traits:["冷静","神秘"],tag:"冷艳美人，拥有读心能力，对人际关系敏感多疑"},
+  {name:"刑事粉红",series:"特搜战队刑事连者",realName:"胡堂小梅",category:"女战士",emoji:"🩷",traits:["天真","元气"],tag:"孩子气、天真烂漫，与茉莉花形成姐妹式对照"},
+  {name:"魔法蓝",series:"魔法战队魔法连者",realName:"小津丽",category:"女战士",emoji:"🪄",traits:["温柔","社交"],tag:"温柔姐姐型，魔法家族中的调和者"},
+  {name:"魔法妈妈",series:"魔法战队魔法连者",realName:"小津深雪",category:"女战士",emoji:"👩‍👧",traits:["温柔","坚强"],tag:"追加白，母亲身份参战，温柔而强大"},
+  {name:"魔法粉",series:"魔法战队魔法连者",realName:"小津芳香",category:"女战士",emoji:"🪄",traits:["元气","社交","天真","温柔"],tag:"22岁，自由奔放，小津家的气氛制造机，第一人称多为“小芳香”。家事无一精通，职业为模特儿。擅长变身咒语，曾变成电扇、大炮、邮筒、蜜蜂、汽车，甚至变过敌方角色，但粉红色总会残留身上。以无先入观的真诚打动冥府神帝坦，使其改邪归正"},
+  {name:"冒险粉红",series:"轰轰战队冒险者",realName:"西堀樱",category:"女战士",emoji:"🗺️",traits:["元气","好胜"],tag:"队长型粉红，好奇心旺盛，行动力强"},
+  {name:"激气黄",series:"兽拳战队激气连者",realName:"宇佐美野乃",category:"女战士",emoji:"🐆",traits:["认真","好胜"],tag:"兽拳使者，认真努力"},
+  {name:"轰音黄",series:"炎神战队轰音者",realName:"楼山早辉",category:"女战士",emoji:"😊",traits:["元气","社交"],tag:"微笑、微笑口头禅，元气担当"},
+  {name:"轰音银",series:"炎神战队轰音者",realName:"须塔美羽",category:"女战士",emoji:"🩶",traits:["温柔","元气"],tag:"战队史上首位正片女性追加战士；好奇心旺盛，对弱小同情泛滥，害怕鬼怪，专业意识高"},
+  {name:"真剑红（女性）",series:"侍战队真剑者",realName:"志叶薰",category:"女战士",emoji:"🎴",traits:["认真","坚强"],tag:"首位女性红色战士；志叶家第18代当家，父母早逝而早熟，隐忍、责任感、谦退"},
+  {name:"护星粉红",series:"天装战队护星者",realName:"绘里",category:"女战士",emoji:"🕊️",traits:["温柔","社交"],tag:"护星红的青梅竹马，开朗乐观，待人宽容忍让"},
+  {name:"豪快粉红",series:"海贼战队豪快者",realName:"艾姆·德·法米由",category:"女战士",emoji:"👑",traits:["优雅","天真"],tag:"公主出身，举止优雅，初期不会战斗也不会料理日常事务"},
+  {name:"Yellow Buster",series:"特命战队Go-Busters",realName:"宇佐见洋子",category:"女战士",emoji:"💛",traits:["元气","好胜"],tag:"元气、不服输"},
+  {name:"强龙粉红",series:"兽电战队强龙者",realName:"艾米结月",category:"女战士",emoji:"🦕",traits:["温柔","社交"],tag:"大小姐但毫无架子"},
+  {name:"特急3号",series:"烈车战队特急者",realName:"美绪",category:"女战士",emoji:"🚃",traits:["冷静","温柔"],tag:"成熟冷静的姐姐型"},
+  {name:"白忍者",series:"手裏剑战队忍忍者",realName:"风花",category:"女战士",emoji:"🤍",traits:["元气","温柔"],tag:"明朗活泼，仰慕父亲"},
+  {name:"兽王虎",series:"动物战队兽王者",realName:"塞拉",category:"女战士",emoji:"🐯",traits:["认真","独立"],tag:"认真且自尊心强"},
+  {name:"兽王鲨",series:"动物战队兽王者",realName:"阿姆",category:"女战士",emoji:"🦈",traits:["独立","天真"],tag:"天真烂漫、我行我素"},
+  {name:"鲁邦黄/巡逻3号",series:"快盗战队鲁邦连者VS警察战队巡逻连者",realName:"布埃 / 司纱",category:"女战士",emoji:"🎭",traits:["神秘","独立"],tag:"双战队对决结构下的两组女性，性格对照鲜明"},
+  {name:"龙装粉红",series:"骑士龙战队龙装者",realName:"明日奈",category:"女战士",emoji:"🏃",traits:["元气","好胜"],tag:"明朗、运动神经出色"},
+  {name:"煌辉绿",series:"魔进战队煌辉者",realName:"速见濑奈",category:"女战士",emoji:"💚",traits:["温柔","坚强"],tag:"温柔但意志坚定"},
+  {name:"煌辉粉",series:"魔进战队煌辉者",realName:"大治小夜",category:"女战士",emoji:"🩺",traits:["冷静","智慧","温柔","认真"],tag:"被粉色煌辉宝石认可的战士，以合气道为主战斗，亦擅于治疗。个性稳重可靠，以“萌”还是“不萌”为基准判断事物。本身是手术高超的外科医生，被誉为“备受瞩目的美女医生”。名字取自南丁格尔（夜莺）"},
+  {name:"全开魔法努",series:"机界战队全界者",realName:"小奈",category:"女战士",emoji:"🪄",traits:["元气","温柔"],tag:"追加/番外女性，活泼"},
+  {name:"鬼头遥",series:"暴太郎战队咚兄弟",realName:"遥",category:"女战士",emoji:"🍑",traits:["独立","神秘"],tag:"漫画式自我意识，追逐主角身份"},
+  {name:"蝴蝶王者",series:"王样战队帝王者",realName:"李塔·伽尼斯嘉",category:"女战士",emoji:"🦋",traits:["冷静","认真"],tag:"贯彻不动的法则，公正严明但不善表露情感；私下喜欢雪人莫夫玩偶和动画"},
+  {name:"蜻蜓王者",series:"王样战队帝王者",realName:"姬野·兰",category:"女战士",emoji:"🐉",traits:["优雅","独立"],tag:"外表美丽但超级任性，钟情美丽/可爱之物，凡事把自己放第一位；作为国主有自己的信念"},
+  {name:"Bun Pink",series:"爆上战队奔奔者",realName:"志布户未来",category:"女战士",emoji:"🚗",traits:["元气","天真"],tag:"情感丰沛、天真烂漫，开心果也是麻烦制造者；依靠直觉战斗"},
+  {name:"豪兽独角兽",series:"头号战队豪兽者",realName:"一河角乃",category:"女战士",emoji:"🦄",traits:["冷静","智慧","执念"],tag:"超级战队史上首位正式女性黑色战士；原警校生，后为私家侦探；为寻找被带走的妹妹与特伽索德签约，获得读心能力；冷峻理性与反差萌并存，喜鬼屋"},
+  {name:"秋叶蓝（初代）",series:"非公认战队秋叶原连者",realName:"青柳美月",category:"女战士",emoji:"🥋",traits:["好胜","坚强"],tag:"18岁高中生，好胜心强，学习综合格斗，战斗最像历代战队；第二季被五角大楼挖角而脱队"},
+  {name:"秋叶蓝（二代）",series:"非公认战队秋叶原连者",realName:"石清水美月",category:"女战士",emoji:"🎤",traits:["天真","社交"],tag:"16岁，天真烂漫，以成为偶像为目标；因是五星战队秋叶原连者忠实粉丝而被拉入战队"},
+  {name:"秋叶黄",series:"非公认战队秋叶原连者",realName:"萌黄梦利亚",category:"女战士",emoji:"🎨",traits:["神秘","独立"],tag:"本职OL，副业Cosplayer与女性向同人志绘师；性格随Cosplay角色变化，重度腐女"},
+
+  /* ---------- 女性反派 8 ---------- */
+  {name:"维达女王",series:"电子战队电磁人",realName:"—",category:"女性反派",emoji:"🌹",traits:["冷艳","破坏"],tag:"自认宇宙最美，喜爱破坏一切美丽事物；疼爱部下"},
+  {name:"维多利亚女王",series:"太阳战队太阳火神",realName:"—",category:"女性反派",emoji:"⚙️",traits:["野心","执念"],tag:"前作维达女王复活，移植机械心脏；结局机械心脏停止而死亡"},
+  {name:"多克托·马森达",series:"超兽战队生命人",realName:"—",category:"女性反派",emoji:"🧪",traits:["智慧","温柔"],tag:"原科学者，认同才能决定价值而堕入黑暗；冷酷却对温柔与爱暗自流泪"},
+  {name:"艾斯凯普",series:"特命战队Go-Busters",realName:"—",category:"女性反派",emoji:"💻",traits:["执念","天真"],tag:"Messiah创造的女儿型阿凡达，称Messiah为爸爸"},
+  {name:"邪闵",series:"高速战队涡轮连者",realName:"—",category:"女性反派",emoji:"👸",traits:["野心","破坏"],tag:"暴魔族公主"},
+  {name:"莉波",series:"头号战队豪兽者",realName:"—",category:"女性反派",emoji:"🎀",traits:["天真","破坏"],tag:"为渴望妹妹的花束请求特伽株恩生成；外天真可爱，内凶残且产生独占布莱丹的念头"},
+  {name:"特伽株恩",series:"头号战队豪兽者",realName:"—",category:"女性反派",emoji:"🖤",traits:["野心","冷艳"],tag:"布莱丹女王兼创立者；被人类以帝加索德为原型创造的人工智能，认为人类世界不完整，意图重新生成完美世界"},
+  {name:"丽彭",series:"头号战队豪兽者",realName:"—",category:"女性反派",emoji:"🩰",traits:["破坏","执念"],tag:"由花束向特伽株恩奏请生成，被设定为花束的妹妹；形象如缎带般可爱，别称破坏"},
+
+  /* ---------- 女干部 13 ---------- */
+  {name:"米拉",series:"电子战队电磁人",realName:"—",category:"女干部",emoji:"🔮",traits:["认真","智慧"],tag:"可变成镜子/水晶球，擅长变装与情报；为保护女王而死"},
+  {name:"凯拉",series:"电子战队电磁人",realName:"—",category:"女干部",emoji:"🛡️",traits:["认真","坚强"],tag:"可变成女王的盾；为保护女王舍身挡匕首而死"},
+  {name:"阿玛逊琪拉",series:"太阳战队太阳火神",realName:"—",category:"女干部",emoji:"⚔️",traits:["坚强","认真"],tag:"身体素质极强的女中豪杰，明知被利用仍力战至自杀"},
+  {name:"女将军泽诺比亚",series:"科学战队炸药人",realName:"—",category:"女干部",emoji:"🕯️",traits:["野心","智慧"],tag:"妖魔力与精神控制使用者，觊觎女帝之座的野心家"},
+  {name:"玛丽亚 / 蓝莉艾",series:"鸟人战队喷射人",realName:"—",category:"女干部",emoji:"🎹",traits:["坚强","神秘"],tag:"原地球防卫军飞行员，被洗脑成为好战干部；恢复记忆后因罪恶感拒绝被原谅，战死"},
+  {name:"谢琳达",series:"星兽战队银河人",realName:"—",category:"女干部",emoji:"🐚",traits:["冷艳","独立"],tag:"贝壳主题美貌操舵士"},
+  {name:"梅丽",series:"兽拳战队激气连者",realName:"—",category:"女干部",emoji:"🦎",traits:["执念","温柔"],tag:"对理央有执着的爱，从反派走向复杂立场"},
+  {name:"害水大臣凯加蕾西亚",series:"炎神战队轰音者",realName:"—",category:"女干部",emoji:"💧",traits:["冷艳","野心"],tag:"美貌与危险并存的干部"},
+  {name:"约顿娜",series:"魔进战队煌辉者",realName:"—",category:"女干部",emoji:"⛩️",traits:["冷艳","神秘"],tag:"外表可爱神社少女，真面目是冷酷强大的约顿恶女"},
+  {name:"努玛乔",series:"魔进战队煌辉者",realName:"—",category:"女干部",emoji:"🌫️",traits:["神秘","冷艳"],tag:"沉淀之海的魔女，约顿海姆女干部"},
+  {name:"芙拉碧乔",series:"忍风战队破里剑者",realName:"—",category:"女干部",emoji:"🍬",traits:["元气","天真"],tag:"双丸子头、软萌语调，颠覆传统暗黑敌人形象的pop角色"},
+  {name:"花束（布柯）",series:"头号战队豪兽者",realName:"—",category:"女干部",emoji:"💐",traits:["温柔","优雅"],tag:"布莱丹技术队长，别称慈爱；优雅温柔，第3话成为百夜陆王的狂热粉丝；珍藏照片被豪兽狮毁掉而视其为仇敌"},
+  {name:"玛露希娜",series:"非公认战队秋叶原连者",realName:"—",category:"女干部",emoji:"💄",traits:["冷艳","神秘"],tag:"邪团法人传销乙再开发部长，色气满满；每集Cosplay历代战队反派；称Doctor Z为父亲大人"}
+];
+
+/* ============================================================
+   2. 题库：单选 42 / 多选 21 / 判断 52
+   ============================================================ */
+var SINGLE_BANK = [
+  {q:'放学路上，突然有怪人从地底钻出来袭击行人，你的第一反应是——',
+   opts:[
+     {t:'毫不犹豫冲上去，先挡在路人前面！',w:{元气:3,坚强:3}},
+     {t:'先观察它的动作，寻找弱点再出手',w:{冷静:3,智慧:3}},
+     {t:'大声呼喊吸引注意，组织大家一起应对',w:{社交:3,正义:2}},
+     {t:'先把周围的小孩疏散到安全地带',w:{温柔:3,认真:2}}
+   ]},
+  {q:'如果只能选一种特摄能力，你最想要——',
+   opts:[
+     {t:'超强格斗术＋火焰之力',w:{元气:2,好胜:3}},
+     {t:'治愈他人、让伤口消失的温柔之光',w:{温柔:3,坚强:2}},
+     {t:'看穿一切谎言与阴谋的智慧之眼',w:{智慧:3,冷静:2}},
+     {t:'变成任何人的伪装能力',w:{神秘:2,独立:2}}
+   ]},
+  {q:'在战队里，你通常是那个——',
+   opts:[
+     {t:'冲在最前面、喊着口号的先锋',w:{元气:3,好胜:2}},
+     {t:'制定战术、冷静指挥的军师',w:{智慧:3,冷静:2}},
+     {t:'调和矛盾、把大家凝聚在一起的核心',w:{温柔:3,社交:2}},
+     {t:'独来独往、但关键时刻一锤定音的独行侠',w:{独立:3,神秘:2}}
+   ]},
+  {q:'你最喜欢哪一句特摄台词？',
+   opts:[
+     {t:'“我要守护大家的笑容！”',w:{温柔:3,正义:3}},
+     {t:'“真相只有一个。”',w:{智慧:3,理性:2}},
+     {t:'“只要还有生命，我就会继续战斗。”',w:{坚强:3,认真:2}},
+     {t:'“这个世界，由我来改变。”',w:{野心:3,冷艳:2}}
+   ]},
+  {q:'一个曾经的敌人跪在你面前说想重新做人，你会——',
+   opts:[
+     {t:'立刻扶她起来，给她一个拥抱',w:{温柔:3,社交:2}},
+     {t:'保持警惕，但愿意给她一次机会',w:{理性:3,冷静:2}},
+     {t:'让她用行动证明，自己暗中观察',w:{冷静:3,智慧:2}},
+     {t:'绝不原谅，敌人就是敌人',w:{冷艳:3,坚强:2}}
+   ]},
+  {q:'你的战斗风格最接近——',
+   opts:[
+     {t:'正面硬刚，用气势把对手压垮',w:{元气:3,好胜:3}},
+     {t:'灵活走位，利用地形和道具打出花样',w:{智慧:3,独立:2}},
+     {t:'保护队友优先，辅助与控制拉满',w:{温柔:3,社交:2}},
+     {t:'找准破绽，一击必杀追求效率',w:{冷静:3,冷艳:2}}
+   ]},
+  {q:'如果让你挑一个并肩作战的搭档，你最看重——',
+   opts:[
+     {t:'热血的斗志和永不放弃的心',w:{元气:3,坚强:2}},
+     {t:'聪明的头脑和冷静的判断',w:{智慧:3,冷静:3}},
+     {t:'善良的内心和治愈的能力',w:{温柔:3,认真:2}},
+     {t:'绝对的实力和可靠的身手',w:{好胜:3,独立:2}}
+   ]},
+  {q:'难得的休息日，你最可能出现在——',
+   opts:[
+     {t:'道场或健身房，挥汗如雨地训练',w:{好胜:3,认真:2}},
+     {t:'图书馆或实验室，钻研感兴趣的东西',w:{智慧:3,理性:2}},
+     {t:'和朋友聚会，顺便照顾一下身边的人',w:{社交:3,温柔:2}},
+     {t:'一个人背上包去没去过的地方',w:{独立:3,神秘:2}}
+   ]},
+  {q:'你怎么理解“力量”？',
+   opts:[
+     {t:'力量就是为了保护比自己弱小的人',w:{温柔:3,正义:2}},
+     {t:'力量是达成目标最直接的工具',w:{理性:3,野心:2}},
+     {t:'力量是责任，越强责任越大',w:{认真:3,坚强:2}},
+     {t:'力量本身没有对错，关键看使用者',w:{智慧:3,冷静:2}}
+   ]},
+  {q:'好朋友突然说“我可能不适合当英雄”，你会——',
+   opts:[
+     {t:'拍她肩膀：“我相信你，你一定行！”',w:{元气:3,温柔:2}},
+     {t:'帮她一条条分析问题，找出解决办法',w:{智慧:3,理性:2}},
+     {t:'默默陪着她，需要的时候递上一杯热奶茶',w:{温柔:3,社交:2}},
+     {t:'故意激她：“这就放弃了？不像你啊。”',w:{好胜:3,元气:2}}
+   ]},
+  {q:'变身后能量只剩最后一分钟，你会——',
+   opts:[
+     {t:'爆发全部力量，把必杀技一次打出去',w:{元气:3,坚强:2}},
+     {t:'冷静判断，找对手最脆弱的时机',w:{冷静:3,智慧:3}},
+     {t:'先保护周围人撤离，再想下一步',w:{温柔:3,认真:2}},
+     {t:'用假动作骗对手，巧妙取胜',w:{神秘:3,智慧:2}}
+   ]},
+  {q:'秘密身份不小心被好朋友发现了，你会——',
+   opts:[
+     {t:'大方承认，邀请她一起并肩作战',w:{社交:3,正义:2}},
+     {t:'请她保密，但之后暗中保护她',w:{温柔:3,神秘:2}},
+     {t:'编个理由搪塞过去，尽量避免牵连',w:{理性:3,独立:2}},
+     {t:'反而利用这件事锻炼她的胆量',w:{认真:3,坚强:2}}
+   ]},
+  {q:'上班/上学快迟到了，前方路口却出现了怪人，你会——',
+   opts:[
+     {t:'迟到就迟到，先变身打怪！',w:{元气:3,正义:3}},
+     {t:'打电话报备一下，再从容解决',w:{理性:3,冷静:2}},
+     {t:'找最近的小巷变身，争取两边都顾上',w:{智慧:3,认真:2}},
+     {t:'先找周围能帮忙的人组成临时小队',w:{社交:3,野心:2}}
+   ]},
+  {q:'拿到一件全新的变身道具，你第一件事是——',
+   opts:[
+     {t:'马上试用，越强越好！',w:{元气:3,好胜:2}},
+     {t:'先读说明书，搞清楚使用方法',w:{认真:3,智慧:2}},
+     {t:'研究它的上限，测试各种组合',w:{智慧:3,野心:2}},
+     {t:'找伙伴一起研究，集思广益',w:{社交:3,温柔:2}}
+   ]},
+  {q:'合体机器人第一次出击，你坐在驾驶舱里，心里在想——',
+   opts:[
+     {t:'好耶！终于可以大显身手了！',w:{元气:3,好胜:2}},
+     {t:'队友们都准备好了吗？',w:{温柔:3,社交:2}},
+     {t:'操作手册再确认一遍，别出错',w:{认真:3,智慧:2}},
+     {t:'希望这次不用用到最后那招',w:{冷静:3,理性:2}}
+   ]},
+  {q:'你被选为追加战士，但队里已经有一个和你定位很像的成员，你会——',
+   opts:[
+     {t:'主动找她聊，想和她成为搭档',w:{社交:3,温柔:2}},
+     {t:'用实力证明自己，不需要解释',w:{好胜:3,独立:2}},
+     {t:'先观察一阵子，再决定怎么相处',w:{冷静:3,智慧:2}},
+     {t:'主动退一步，把机会让给她',w:{温柔:3,认真:2}}
+   ]},
+  {q:'童年时最让你心动的超级战队场面是——',
+   opts:[
+     {t:'五个人一起喊出招式名的瞬间',w:{元气:3,社交:2}},
+     {t:'队长为保护队友独自断后',w:{坚强:3,正义:2}},
+     {t:'女战士在危急时刻冷静指挥',w:{冷静:3,智慧:2}},
+     {t:'反派揭露过去的悲哀真相',w:{神秘:3,温柔:2}}
+   ]},
+  {q:'敌方女干部提出：只要你加入她们，她就撤军。你会——',
+   opts:[
+     {t:'直接拒绝，宁可战死',w:{坚强:3,正义:2}},
+     {t:'假装答应，找机会反杀',w:{智慧:3,冷静:2}},
+     {t:'问她：“你到底想要什么？”',w:{温柔:3,神秘:2}},
+     {t:'笑着说：“你确定你能驾驭我？”',w:{野心:3,冷艳:2}}
+   ]},
+  {q:'战队基地被入侵，你是第一个发现的人，你会——',
+   opts:[
+     {t:'立刻冲上去硬刚',w:{好胜:3,元气:2}},
+     {t:'先通知所有人，再拖住敌人',w:{认真:3,冷静:2}},
+     {t:'保护基地里的非战斗人员',w:{温柔:3,坚强:2}},
+     {t:'悄悄跟着敌人，看他到底想干什么',w:{智慧:3,神秘:2}}
+   ]},
+  {q:'你最想在超级战队里成为哪种“追加战士”？',
+   opts:[
+     {t:'帅气的第六人，登场自带BGM',w:{元气:3,优雅:2}},
+     {t:'神秘莫测的番外战士，谁也猜不透',w:{神秘:3,冷艳:2}},
+     {t:'温柔可靠的支援型，默默守护大家',w:{温柔:3,认真:2}},
+     {t:'强到让敌人闻风丧胆的战力天花板',w:{野心:3,好胜:2}}
+   ]},
+  {q:'队友在战斗中倒下了，只剩下你一个人面对敌人，你的第一反应是——',
+   opts:[
+     {t:'挡在她前面，哪怕一个人也要撑到最后一秒',w:{坚强:3,正义:2}},
+     {t:'冷静分析敌人弱点，找出一击必杀的机会',w:{冷静:3,智慧:2}},
+     {t:'先想办法把队友转移到安全位置',w:{温柔:3,认真:2}},
+     {t:'大声喊她起来：“我们说好一起回去的！”',w:{社交:3,元气:2}}
+   ]},
+  {q:'如果变身器突然坏了，而敌人正在逼近，你会——',
+   opts:[
+     {t:'赤手空拳也上，气势不能输',w:{好胜:3,元气:2}},
+     {t:'找周围可以利用的东西临时当武器',w:{智慧:3,独立:2}},
+     {t:'先带受伤的人撤离，保存战力',w:{温柔:3,冷静:2}},
+     {t:'大声呼救，相信伙伴会赶来',w:{社交:3,天真:2}}
+   ]},
+  {q:'队长让你去做诱饵，明知九死一生，你会——',
+   opts:[
+     {t:'毫不犹豫接下：“交给我吧！”',w:{正义:3,坚强:2}},
+     {t:'先问清楚整个计划，确认能配合',w:{智慧:3,认真:2}},
+     {t:'答应，但要求队长保证其他人安全',w:{温柔:3,社交:2}},
+     {t:'笑着说：“诱饵也要看是谁当的。”',w:{野心:3,冷艳:2}}
+   ]},
+  {q:'你发现队里有人隐瞒了自己的真实身份，你会——',
+   opts:[
+     {t:'直接当面问清楚',w:{正义:3,冷静:2}},
+     {t:'先观察，看她会不会自己说',w:{冷静:3,智慧:2}},
+     {t:'替她保守秘密，等她愿意开口',w:{温柔:3,社交:2}},
+     {t:'暗中调查她的底细',w:{智慧:3,神秘:2}}
+   ]},
+  {q:'如果只能救一个人，另一个是陌生人，另一个是你最好的朋友，你会——',
+   opts:[
+     {t:'救朋友，承认自己做不到大公无私',w:{温柔:3,社交:2}},
+     {t:'救陌生人，因为朋友会理解我',w:{正义:3,认真:2}},
+     {t:'想办法两个都救，哪怕拼上性命',w:{坚强:3,好胜:2}},
+     {t:'谁都救不了，我会自责一辈子',w:{温柔:3,神秘:2}}
+   ]},
+  {q:'你被敌人抓住，对方想用你做筹码要挟战队，你会——',
+   opts:[
+     {t:'大喊“别管我，快打！”',w:{坚强:3,正义:2}},
+     {t:'冷静观察，找机会自己逃出去',w:{智慧:3,独立:2}},
+     {t:'和对方谈判，拖延时间',w:{社交:3,冷静:2}},
+     {t:'趁机策反对方的部下',w:{野心:3,神秘:2}}
+   ]},
+  {q:'如果你突然获得了前所未有的强大力量，你最想——',
+   opts:[
+     {t:'用它保护所有人，成为最可靠的存在',w:{正义:3,认真:2}},
+     {t:'用它挑战更强的敌人，证明自己',w:{好胜:3,野心:2}},
+     {t:'用它治好所有受伤的人',w:{温柔:3,坚强:2}},
+     {t:'先藏起来，不到关键时刻不用',w:{冷静:3,神秘:2}}
+   ]},
+  {q:'你更想要哪一种队长？',
+   opts:[
+     {t:'永远冲在最前面、以身作则的队长',w:{元气:3,正义:2}},
+     {t:'冷静睿智、什么都能算到的队长',w:{智慧:3,冷静:2}},
+     {t:'温柔包容、会接住每个人情绪的队长',w:{温柔:3,社交:2}},
+     {t:'强大到让人甘心追随的队长',w:{野心:3,好胜:2}}
+   ]},
+  {q:'战队因为内讧要解散了，你会——',
+   opts:[
+     {t:'站出来把大家骂醒',w:{元气:3,正义:2}},
+     {t:'挨个找每个人谈心，找出问题根源',w:{温柔:3,社交:2}},
+     {t:'冷静列出继续战斗的理由',w:{智慧:3,认真:2}},
+     {t:'尊重大家的决定，一个人继续战斗',w:{独立:3,坚强:2}}
+   ]},
+  {q:'你最欣赏哪种反派女干部？',
+   opts:[
+     {t:'美丽、强大、优雅到最后一刻',w:{优雅:3,冷艳:2}},
+     {t:'有悲惨过去、却依然选择作恶',w:{神秘:3,温柔:2}},
+     {t:'手段狠辣、算无遗策的谋士',w:{智慧:3,野心:2}},
+     {t:'只忠于一人、愿意为她赴死',w:{执念:3,认真:2}}
+   ]},
+  {q:'你最不能接受战队的哪条规则？',
+   opts:[
+     {t:'“不许让普通人知道我们的身份”',w:{社交:3,正义:2}},
+     {t:'“队长的话就是绝对命令”',w:{独立:3,野心:2}},
+     {t:'“不许对敌人心软”',w:{温柔:3,坚强:2}},
+     {t:'“必须在规定时间内结束战斗”',w:{认真:3,理性:2}}
+   ]},
+  {q:'你最喜欢女战士之间哪种友情？',
+   opts:[
+     {t:'互相吐槽、又默契十足的搭档',w:{社交:3,元气:2}},
+     {t:'彼此竞争、又彼此成就的对手',w:{好胜:3,认真:2}},
+     {t:'一个冷静一个活泼，互补又信任',w:{冷静:3,温柔:2}},
+     {t:'生死关头可以把后背交给对方',w:{坚强:3,正义:2}}
+   ]},
+  {q:'一场恶战之后，你最想做的事是——',
+   opts:[
+     {t:'和伙伴一起去吃拉面，大声笑',w:{社交:3,元气:2}},
+     {t:'先确认每个人都没事，再一个人发呆',w:{温柔:3,独立:2}},
+     {t:'复盘整场战斗，写进笔记',w:{智慧:3,认真:2}},
+     {t:'一个人坐在高处，看着城市的灯',w:{神秘:3,冷静:2}}
+   ]},
+  {q:'如果队友为了救你而受伤，你会——',
+   opts:[
+     {t:'一整天守在她身边，寸步不离',w:{温柔:3,社交:2}},
+     {t:'发誓变强，不让任何人再为自己受伤',w:{坚强:3,好胜:2}},
+     {t:'冷静分析哪里出了错，下次不再犯',w:{智慧:3,冷静:2}},
+     {t:'嘴上说“谁让你多管闲事”，偷偷红眼眶',w:{冷艳:3,温柔:2}}
+   ]},
+  {q:'你最想拥有女角色的哪种“反差萌”？',
+   opts:[
+     {t:'平时很冷静，私下却沉迷玩偶和动画',w:{冷静:3,天真:2}},
+     {t:'外表优雅，内心其实超爱吐槽',w:{优雅:3,社交:2}},
+     {t:'看起来柔弱，关键时刻比谁都硬',w:{温柔:3,坚强:2}},
+     {t:'一副大人样，却会因为小事哭鼻子',w:{认真:3,天真:2}}
+   ]},
+  {q:'如果战队要你隐姓埋名生活一辈子，你会——',
+   opts:[
+     {t:'接受，只要还能守护大家就好',w:{正义:3,认真:2}},
+     {t:'拒绝，我想和伙伴一起被记住',w:{社交:3,野心:2}},
+     {t:'接受，但要求保留和家人联系的权利',w:{温柔:3,坚强:2}},
+     {t:'看情况，先想清楚代价再决定',w:{冷静:3,智慧:2}}
+   ]},
+  {q:'你最想拥有哪一种“变身台词”？',
+   opts:[
+     {t:'“用笑容守护这个世界！”',w:{元气:3,温柔:2}},
+     {t:'“这次，换我来保护你。”',w:{温柔:3,正义:2}},
+     {t:'“别挡路，我还有事要做。”',w:{冷艳:3,独立:2}},
+     {t:'“让所有人记住我的名字！”',w:{野心:3,好胜:2}}
+   ]},
+  {q:'如果有一天你变成了反派，你最可能因为——',
+   opts:[
+     {t:'重要的人被世界伤害，你选择站到世界的对面',w:{执念:3,破坏:2}},
+     {t:'被控制、被洗脑，身不由己',w:{温柔:3,神秘:2}},
+     {t:'为了获得更强力量，主动走入黑暗',w:{野心:3,好胜:2}},
+     {t:'看清了某些真相，再也不相信正义',w:{冷静:3,理性:2}}
+   ]},
+  {q:'你希望自己在战队的结局是——',
+   opts:[
+     {t:'打完最后一战，和伙伴一起笑着回家',w:{社交:3,温柔:2}},
+     {t:'为了保护大家，壮烈地战死',w:{正义:3,坚强:2}},
+     {t:'功成身退，一个人踏上新的旅程',w:{独立:3,神秘:2}},
+     {t:'成为传说，被后人永远记住',w:{野心:3,优雅:2}}
+   ]},
+  {q:'如果变身能力可以自由变化，你最想变成——',
+   opts:[
+     {t:'电扇、大炮、邮筒之类的物品，什么都想试试（身上还会留一点粉色）',w:{元气:2,天真:3,社交:1}},
+     {t:'各种动物，自由自在地跑',w:{独立:2,天真:2}},
+     {t:'最锋利的武器，一击解决敌人',w:{好胜:3,坚强:2}},
+     {t:'敌方角色的模样，混进去搞情报',w:{智慧:2,神秘:3}}
+   ]},
+  {q:'你判断一件事物好坏的标准是——',
+   opts:[
+     {t:'“萌不萌”，这是我的第一标准',w:{天真:3,社交:2}},
+     {t:'有没有道理、合不合逻辑',w:{智慧:3,冷静:2}},
+     {t:'对大家有没有好处',w:{温柔:3,正义:2}},
+     {t:'我自己喜不喜欢',w:{独立:3,野心:2}}
+   ]}
+];
+
+var MULTI_BANK = [
+  {q:'【多选】下面哪些描述很像你？',
+   opts:[
+     {t:'一开心就藏不住，笑声很大',w:{元气:2,天真:1}},
+     {t:'看到别人难过，自己也会跟着难过',w:{温柔:2}},
+     {t:'做事之前一定会先想清楚',w:{冷静:2,智慧:1}},
+     {t:'认定的事，十头牛都拉不回来',w:{坚强:2,好胜:1}},
+     {t:'喜欢一个人待着，不想被打扰',w:{独立:2,神秘:1}},
+     {t:'看到漂亮的东西就走不动路',w:{优雅:2,天真:1}}
+   ]},
+  {q:'【多选】你最想拥有哪种能力？',
+   opts:[
+     {t:'治愈一切伤痛',w:{温柔:2}},
+     {t:'看穿人心',w:{智慧:1,神秘:2}},
+     {t:'让所有人都喜欢我',w:{社交:2,优雅:1}},
+     {t:'强大到无人能敌',w:{野心:2,好胜:1}},
+     {t:'自由穿梭时空',w:{独立:2,天真:1}}
+   ]},
+  {q:'【多选】以下哪些场景会让你心动？',
+   opts:[
+     {t:'穿一次华丽的公主裙',w:{优雅:2,天真:1}},
+     {t:'和伙伴打一场漂亮的配合战',w:{元气:2,社交:1}},
+     {t:'在雨夜独自听完一整张专辑',w:{神秘:2,独立:1}},
+     {t:'被人认真地夸奖“你很厉害”',w:{好胜:1,认真:2}},
+     {t:'照顾一只受伤的小动物',w:{温柔:2,坚强:1}}
+   ]},
+  {q:'【多选】你觉得自己身上有哪些“反差”？',
+   opts:[
+     {t:'外表柔弱，其实很能扛',w:{温柔:1,坚强:2}},
+     {t:'看起来很冷，其实很黏人',w:{冷艳:2,温柔:1}},
+     {t:'平时很宅，关键时刻超可靠',w:{独立:1,认真:2}},
+     {t:'嘴上说不在乎，其实很在意',w:{神秘:1,执念:2}},
+     {t:'一直很开朗，但深夜会偷偷 emo',w:{元气:1,神秘:2}}
+   ]},
+  {q:'【多选】选队友时，你最看重？',
+   opts:[
+     {t:'能一起大笑的默契',w:{社交:2,元气:1}},
+     {t:'关键时刻靠得住',w:{认真:2,坚强:1}},
+     {t:'有自己想法、不随波逐流',w:{独立:1,智慧:2}},
+     {t:'温柔到能接住你所有情绪',w:{温柔:2}},
+     {t:'有野心、能带着大家往前冲',w:{野心:2,好胜:1}}
+   ]},
+  {q:'【多选】假如你被卷入一场战队大战，你最想做的是——',
+   opts:[
+     {t:'保护身边来不及逃跑的人',w:{温柔:2,坚强:1}},
+     {t:'冲上去和敌人正面交手',w:{好胜:2,元气:1}},
+     {t:'找地方联系战队，提供情报',w:{智慧:2,认真:1}},
+     {t:'把受伤的人转移到安全地带',w:{温柔:1,社交:2}},
+     {t:'拍下一切，记录真相',w:{独立:2,智慧:1}}
+   ]},
+  {q:'【多选】你最喜欢的超级战队“名场面”类型是——',
+   opts:[
+     {t:'五人合体机器人首次亮相',w:{元气:2,社交:1}},
+     {t:'追加战士霸气登场',w:{好胜:2,优雅:1}},
+     {t:'女战士之间的并肩作战',w:{温柔:2,坚强:1}},
+     {t:'队长倒下，队员接过旗帜',w:{认真:2,正义:1}},
+     {t:'反派被感化，说出真相',w:{温柔:1,神秘:2}}
+   ]},
+  {q:'【多选】如果能拿到一件战队装备，你最想要——',
+   opts:[
+     {t:'变身器',w:{元气:2,好胜:1}},
+     {t:'合体机器人的操控权',w:{智慧:1,认真:2}},
+     {t:'专属武器',w:{坚强:2,认真:1}},
+     {t:'战队通讯器',w:{社交:2,元气:1}},
+     {t:'队长徽章',w:{野心:2,认真:1}}
+   ]},
+  {q:'【多选】你最欣赏哪几种女战士的高光时刻？',
+   opts:[
+     {t:'一个人在雨中挡住敌人，掩护所有人撤退',w:{坚强:2,正义:1}},
+     {t:'笑着说出“我来当诱饵”，然后转身离开',w:{温柔:2,坚强:1}},
+     {t:'在指挥部冷静分析，把全局都算得清清楚楚',w:{智慧:2,冷静:1}},
+     {t:'把变身器让给更需要的人，自己赤手空拳',w:{温柔:2,认真:1}},
+     {t:'在绝境中说出“我还没输”',w:{好胜:2,元气:1}}
+   ]},
+  {q:'【多选】如果让你设计自己的变身服装，你会加上——',
+   opts:[
+     {t:'飘带或披风',w:{优雅:2,天真:1}},
+     {t:'星星或花瓣的装饰',w:{温柔:2,天真:1}},
+     {t:'短刀或战术腰带',w:{坚强:2,认真:1}},
+     {t:'能装下所有宝贝的魔法口袋',w:{独立:2,智慧:1}},
+     {t:'通讯器＋定位装置',w:{冷静:1,认真:2}}
+   ]},
+  {q:'【多选】你最想拥有哪个角色的“标志性特质”？',
+   opts:[
+     {t:'永远笑着面对一切的乐观',w:{元气:2,天真:1}},
+     {t:'临危不乱的冷静',w:{冷静:2,智慧:1}},
+     {t:'对伙伴毫无保留的信任',w:{温柔:2,社交:1}},
+     {t:'为了目标不惜一切的决心',w:{野心:2,执念:1}},
+     {t:'不讨好任何人的独立',w:{独立:2,冷艳:1}}
+   ]},
+  {q:'【多选】如果敌人抓住了你的伙伴，威胁你放下武器，你会——',
+   opts:[
+     {t:'放下武器，先把伙伴换回来',w:{温柔:2,坚强:1}},
+     {t:'假装放下，找机会反杀',w:{智慧:2,冷静:1}},
+     {t:'绝不妥协，相信伙伴能自己挣脱',w:{坚强:2,正义:1}},
+     {t:'用话术拖延时间等支援',w:{社交:2,冷静:1}},
+     {t:'直接暴走，谁敢碰她谁死',w:{执念:2,破坏:1}}
+   ]},
+  {q:'【多选】你最想收藏哪种超级战队周边？',
+   opts:[
+     {t:'女战士的变身器复刻版',w:{元气:2,优雅:1}},
+     {t:'五人合体机器人手办',w:{认真:2,社交:1}},
+     {t:'战队成员签名合照',w:{社交:2,温柔:1}},
+     {t:'反派女干部的服装复刻',w:{冷艳:2,神秘:1}},
+     {t:'女战士专属武器模型',w:{好胜:2,坚强:1}}
+   ]},
+  {q:'【多选】你希望自己的“专属BGM”是哪种风格？',
+   opts:[
+     {t:'燃到爆炸的热血摇滚',w:{元气:2,好胜:1}},
+     {t:'温柔治愈的钢琴曲',w:{温柔:2,优雅:1}},
+     {t:'神秘优雅的弦乐',w:{神秘:2,冷艳:1}},
+     {t:'轻快跳跃的电子乐',w:{天真:2,社交:1}},
+     {t:'厚重史诗感的交响乐',w:{野心:2,认真:1}}
+   ]},
+  {q:'【多选】当你被误解、被指责时，你会——',
+   opts:[
+     {t:'当场反驳，把话说清楚',w:{好胜:2,社交:1}},
+     {t:'不解释，用行动证明',w:{独立:2,坚强:1}},
+     {t:'先难过一会儿，再自己想通',w:{温柔:2,神秘:1}},
+     {t:'冷静复盘自己到底有没有错',w:{冷静:2,理性:1}},
+     {t:'把委屈咽下去，继续做事',w:{认真:2,坚强:1}}
+   ]},
+  {q:'【多选】你觉得自己更接近哪种“女干部”气质？',
+   opts:[
+     {t:'优雅迷人、让所有人不敢小看的类型',w:{优雅:2,冷艳:1}},
+     {t:'表面温柔、实则深不可测的类型',w:{神秘:2,温柔:1}},
+     {t:'目标明确、手段狠辣的类型',w:{野心:2,破坏:1}},
+     {t:'忠诚到愿意为某人赴死的类型',w:{执念:2,认真:1}},
+     {t:'看起来软萌、其实超能打的类型',w:{天真:2,好胜:1}}
+   ]},
+  {q:'【多选】如果战队要选新队长，你会投票给——',
+   opts:[
+     {t:'冲在最前面的人',w:{元气:2,正义:1}},
+     {t:'最会做计划的人',w:{智慧:2,冷静:1}},
+     {t:'最会照顾大家情绪的人',w:{温柔:2,社交:1}},
+     {t:'最强的人',w:{好胜:2,野心:1}},
+     {t:'最愿意替别人扛责任的人',w:{认真:2,坚强:1}}
+   ]},
+  {q:'【多选】你觉得女战士最迷人的地方是——',
+   opts:[
+     {t:'明明可以靠脸，偏偏靠实力',w:{好胜:2,优雅:1}},
+     {t:'在绝境里依然保持微笑',w:{坚强:2,元气:1}},
+     {t:'把最柔软的部分留给最重要的人',w:{温柔:2,神秘:1}},
+     {t:'从不被定义，想做什么就做什么',w:{独立:2,野心:1}},
+     {t:'认认真真把每件小事都做好',w:{认真:2,冷静:1}}
+   ]},
+  {q:'【多选】如果你能和一位战队女角色成为挚友，你最想和她——',
+   opts:[
+     {t:'一起去吃甜品、聊八卦',w:{社交:2,元气:1}},
+     {t:'一起训练、互相较劲',w:{好胜:2,认真:1}},
+     {t:'深夜聊人生和梦想',w:{温柔:2,神秘:1}},
+     {t:'一起吐槽这个世界有多荒谬',w:{独立:2,冷艳:1}},
+     {t:'一起去冒险、看没看过的风景',w:{天真:2,智慧:1}}
+   ]},
+  {q:'【多选】你最不能接受队友的哪种行为？',
+   opts:[
+     {t:'临阵脱逃',w:{正义:2,坚强:1}},
+     {t:'对敌人心软到害了大家',w:{认真:2,冷静:1}},
+     {t:'什么都自己扛、不肯求助',w:{社交:2,温柔:1}},
+     {t:'为了胜利不择手段',w:{温柔:2,正义:1}},
+     {t:'看不起弱者',w:{正义:2,温柔:1}}
+   ]},
+  {q:'【多选】你最想拥有哪种变身或战斗能力？',
+   opts:[
+     {t:'自由变成任何物体（但会残留一点粉色）',w:{元气:2,天真:1}},
+     {t:'合气道近身战，以柔克刚',w:{坚强:2,冷静:1}},
+     {t:'治疗他人、让伤口消失',w:{温柔:2,认真:1}},
+     {t:'望远或透视，看穿一切',w:{智慧:2,冷静:1}},
+     {t:'读心，理解每个人在想什么',w:{神秘:2,温柔:1}}
+   ]}
+];
+
+var BOOL_BANK = [
+  {q:'你相信“女孩子的温柔也是一种力量”。',
+   opts:[{t:'✅ 是',w:{温柔:2,坚强:1}},{t:'❌ 不是',w:{冷静:2,好胜:1}}]},
+  {q:'你更愿意当“被大家喜欢的女孩”，而不是“让人害怕的女孩”。',
+   opts:[{t:'✅ 是',w:{温柔:2,社交:1}},{t:'❌ 不是',w:{冷艳:2,野心:1}}]},
+  {q:'即使被误会，你也懒得解释。',
+   opts:[{t:'✅ 是',w:{神秘:2,独立:1}},{t:'❌ 不是',w:{社交:2,元气:1}}]},
+  {q:'你做事之前，一定会先把计划列清楚。',
+   opts:[{t:'✅ 是',w:{认真:2,冷静:1}},{t:'❌ 不是',w:{元气:2,天真:1}}]},
+  {q:'你会为了喜欢的人或事，做出很疯狂的决定。',
+   opts:[{t:'✅ 是',w:{执念:2,元气:1}},{t:'❌ 不是',w:{冷静:2,智慧:1}}]},
+  {q:'你宁愿自己受伤，也不想看到朋友难过。',
+   opts:[{t:'✅ 是',w:{温柔:2,坚强:1}},{t:'❌ 不是',w:{独立:2,冷艳:1}}]},
+  {q:'你觉得“可爱”和“强大”可以同时存在。',
+   opts:[{t:'✅ 是',w:{元气:2,坚强:1}},{t:'❌ 不是',w:{优雅:2,认真:1}}]},
+  {q:'你对漂亮的衣服、首饰、妆容有执念。',
+   opts:[{t:'✅ 是',w:{优雅:2,天真:1}},{t:'❌ 不是',w:{独立:2,认真:1}}]},
+  {q:'你曾经幻想过自己是某个故事里的女主角。',
+   opts:[{t:'✅ 是',w:{天真:2,社交:1}},{t:'❌ 不是',w:{冷静:2,智慧:1}}]},
+  {q:'如果规则不合理，你会选择打破它。',
+   opts:[{t:'✅ 是',w:{野心:2,独立:1}},{t:'❌ 不是',w:{认真:2,冷静:1}}]},
+  {q:'你很容易被细节打动，比如一句不经意的话。',
+   opts:[{t:'✅ 是',w:{温柔:2,神秘:1}},{t:'❌ 不是',w:{元气:2,好胜:1}}]},
+  {q:'你更喜欢被夸奖“可爱”，而不是“帅气”。',
+   opts:[{t:'✅ 是',w:{天真:2,优雅:1}},{t:'❌ 不是',w:{好胜:2,坚强:1}}]},
+  {q:'你希望自己在别人眼里是“有距离感的美人”。',
+   opts:[{t:'✅ 是',w:{冷艳:2,神秘:1}},{t:'❌ 不是',w:{元气:2,社交:1}}]},
+  {q:'你相信只要够努力，就一定能追上天才。',
+   opts:[{t:'✅ 是',w:{好胜:2,认真:1}},{t:'❌ 不是',w:{冷静:2,智慧:1}}]},
+  {q:'你会因为一部作品，喜欢上一个角色很久很久。',
+   opts:[{t:'✅ 是',w:{执念:2,天真:1}},{t:'❌ 不是',w:{冷静:2,独立:1}}]},
+  {q:'看到不公的事情，你会忍不住站出来。',
+   opts:[{t:'✅ 是',w:{坚强:2,温柔:1}},{t:'❌ 不是',w:{冷静:2,独立:1}}]},
+  {q:'你相信“只要还有一个人记得，就不算真的消失”。',
+   opts:[{t:'✅ 是',w:{温柔:2,执念:1}},{t:'❌ 不是',w:{理性:2,冷静:1}}]},
+  {q:'你常常在深夜一个人想很多。',
+   opts:[{t:'✅ 是',w:{神秘:2,独立:1}},{t:'❌ 不是',w:{元气:2,社交:1}}]},
+  {q:'你愿意为了团队，暂时放下自己的坚持。',
+   opts:[{t:'✅ 是',w:{社交:2,认真:1}},{t:'❌ 不是',w:{独立:2,野心:1}}]},
+  {q:'你觉得真正的强大，是不需要向谁证明什么。',
+   opts:[{t:'✅ 是',w:{冷静:2,优雅:1}},{t:'❌ 不是',w:{好胜:2,野心:1}}]},
+  {q:'你会在心里给重要的人留一个位置，很久很久。',
+   opts:[{t:'✅ 是',w:{温柔:2,执念:1}},{t:'❌ 不是',w:{独立:2,冷艳:1}}]},
+  {q:'如果变成反派能保护重要的人，你会考虑。',
+   opts:[{t:'✅ 是',w:{执念:2,破坏:1}},{t:'❌ 不是',w:{正义:2,温柔:1}}]},
+  {q:'你相信“战队的力量，来自五个人缺一不可”。',
+   opts:[{t:'✅ 是',w:{社交:2,认真:1}},{t:'❌ 不是',w:{独立:2,野心:1}}]},
+  {q:'如果队友犯了大错，你会先替她向队长求情。',
+   opts:[{t:'✅ 是',w:{温柔:2,社交:1}},{t:'❌ 不是',w:{认真:2,正义:1}}]},
+  {q:'你愿意在关键时刻，把唯一的变身机会让给队友。',
+   opts:[{t:'✅ 是',w:{温柔:2,正义:1}},{t:'❌ 不是',w:{好胜:2,坚强:1}}]},
+  {q:'看到敌方女干部的美貌和强大，你会忍不住欣赏。',
+   opts:[{t:'✅ 是',w:{优雅:2,冷艳:1}},{t:'❌ 不是',w:{坚强:2,认真:1}}]},
+  {q:'你觉得“追加战士”天生就比初期成员更酷。',
+   opts:[{t:'✅ 是',w:{好胜:2,天真:1}},{t:'❌ 不是',w:{认真:2,冷静:1}}]},
+  {q:'如果战队要你隐姓埋名生活，你也愿意。',
+   opts:[{t:'✅ 是',w:{认真:2,温柔:1}},{t:'❌ 不是',w:{野心:2,独立:1}}]},
+  {q:'你相信“只要战队还有一个人站着，战斗就没有结束”。',
+   opts:[{t:'✅ 是',w:{坚强:2,正义:1}},{t:'❌ 不是',w:{理性:2,冷静:1}}]},
+  {q:'如果你最好的朋友变成了反派，你会先试着把她拉回来。',
+   opts:[{t:'✅ 是',w:{温柔:2,执念:1}},{t:'❌ 不是',w:{正义:2,坚强:1}}]},
+  {q:'你会因为一个反派的故事而对她产生好感。',
+   opts:[{t:'✅ 是',w:{温柔:2,神秘:1}},{t:'❌ 不是',w:{正义:2,冷静:1}}]},
+  {q:'你愿意为了守护一个陌生人而战斗。',
+   opts:[{t:'✅ 是',w:{正义:2,温柔:1}},{t:'❌ 不是',w:{独立:2,理性:1}}]},
+  {q:'你觉得自己有点“中二”，偶尔会幻想自己有隐藏身份。',
+   opts:[{t:'✅ 是',w:{天真:2,元气:1}},{t:'❌ 不是',w:{认真:2,冷静:1}}]},
+  {q:'你更欣赏“一个人扛下一切”的孤独英雄，而不是团队作战。',
+   opts:[{t:'✅ 是',w:{独立:2,神秘:1}},{t:'❌ 不是',w:{社交:2,温柔:1}}]},
+  {q:'你曾经因为一部战队作品，偷偷学过里面的变身姿势。',
+   opts:[{t:'✅ 是',w:{天真:2,元气:1}},{t:'❌ 不是',w:{认真:2,冷静:1}}]},
+  {q:'你觉得“失败”不可怕，可怕的是“没有尽全力”。',
+   opts:[{t:'✅ 是',w:{好胜:2,认真:1}},{t:'❌ 不是',w:{冷静:2,理性:1}}]},
+  {q:'你会为了一个约定，等一个人很久很久。',
+   opts:[{t:'✅ 是',w:{执念:2,温柔:1}},{t:'❌ 不是',w:{独立:2,理性:1}}]},
+  {q:'你觉得自己比同龄人更早学会“不哭”。',
+   opts:[{t:'✅ 是',w:{坚强:2,认真:1}},{t:'❌ 不是',w:{天真:2,元气:1}}]},
+  {q:'你更想成为“被依赖的人”，而不是“被保护的人”。',
+   opts:[{t:'✅ 是',w:{认真:2,坚强:1}},{t:'❌ 不是',w:{温柔:2,社交:1}}]},
+  {q:'如果可以选择，你更想当“强大到孤独”的人，而不是“平凡但温暖”的人。',
+   opts:[{t:'✅ 是',w:{野心:2,独立:1}},{t:'❌ 不是',w:{温柔:2,社交:1}}]},
+  {q:'你会因为一句“我相信你”，而拼到最后一刻。',
+   opts:[{t:'✅ 是',w:{温柔:2,好胜:1}},{t:'❌ 不是',w:{独立:2,冷静:1}}]},
+  {q:'你觉得“女孩子的眼泪”不是软弱，而是勇气。',
+   opts:[{t:'✅ 是',w:{温柔:2,坚强:1}},{t:'❌ 不是',w:{冷艳:2,理性:1}}]},
+  {q:'你喜欢在人群里发光，而不是躲在角落。',
+   opts:[{t:'✅ 是',w:{社交:2,元气:1}},{t:'❌ 不是',w:{独立:2,神秘:1}}]},
+  {q:'如果战队里有人比你更适合当队长，你会心甘情愿配合她。',
+   opts:[{t:'✅ 是',w:{温柔:2,认真:1}},{t:'❌ 不是',w:{好胜:2,野心:1}}]},
+  {q:'你相信“即使是反派，也有值得被理解的理由”。',
+   opts:[{t:'✅ 是',w:{温柔:2,神秘:1}},{t:'❌ 不是',w:{正义:2,冷静:1}}]},
+  {q:'你会为了一次“不甘心”，重新挑战一件已经失败过很多次的事。',
+   opts:[{t:'✅ 是',w:{好胜:2,坚强:1}},{t:'❌ 不是',w:{理性:2,冷静:1}}]},
+  {q:'你觉得“好看”是一种战斗力。',
+   opts:[{t:'✅ 是',w:{优雅:2,元气:1}},{t:'❌ 不是',w:{认真:2,坚强:1}}]},
+  {q:'你更想拥有“让人安心的力量”，而不是“让人害怕的力量”。',
+   opts:[{t:'✅ 是',w:{温柔:2,正义:1}},{t:'❌ 不是',w:{冷艳:2,野心:1}}]},
+  {q:'你会在心里给已经离开的人，留一盏灯。',
+   opts:[{t:'✅ 是',w:{温柔:2,执念:1}},{t:'❌ 不是',w:{独立:2,理性:1}}]},
+  {q:'你希望自己在故事的最后，是被大家围着笑的那一个。',
+   opts:[{t:'✅ 是',w:{社交:2,温柔:1}},{t:'❌ 不是',w:{独立:2,神秘:1}}]},
+  {q:'你相信“无先入观的真诚”能打动敌人，让对方改邪归正。',
+   opts:[{t:'✅ 是',w:{温柔:2,社交:1}},{t:'❌ 不是',w:{冷静:2,正义:1}}]},
+  {q:'你会用“萌不萌”来判断一件事物值不值得喜欢。',
+   opts:[{t:'✅ 是',w:{天真:2,社交:1}},{t:'❌ 不是',w:{冷静:2,认真:1}}]}
+];
+
+/* ============================================================
+   3. 标签文案 / 配色
+   ============================================================ */
+var TRAIT_TEXT = {
+  '元气':'你身上有种藏不住的活力，笑起来会传染人。',
+  '温柔':'你总是先想到别人，是那种会把最后一块蛋糕留给别人的女孩。',
+  '冷静':'越是混乱的时候你越清醒，像一杯放凉了的花茶。',
+  '坚强':'你不爱喊疼，摔倒了会自己拍拍裙子站起来。',
+  '优雅':'你连发呆的样子都很好看，骨子里带着一点贵气。',
+  '天真':'你心里住着一个小女孩，相信世界上真的有魔法。',
+  '智慧':'你脑子转得快，总能看到别人忽略的细节。',
+  '独立':'你习惯自己解决问题，也享受一个人的时光。',
+  '好胜':'你骨子里有股不服输的劲儿，越难越想赢。',
+  '认真':'你做事一丝不苟，答应的事一定做到。',
+  '社交':'你走到哪里都能很快和人熟起来，是天然的气氛担当。',
+  '神秘':'你身上带着一点看不透的气质，别人总觉得你有故事。',
+  '野心':'你从不掩饰自己想要的东西，也从不害怕被看见。',
+  '执念':'你爱一样东西会爱得很深，深到有点危险。',
+  '冷艳':'你不需要讨好谁，光是站在那里就足够让人移不开眼。',
+  '破坏':'你心里有一团火，温柔的时候很美，燃烧起来也很可怕。',
+  '正义':'你心里有一条不能碰的底线。',
+  '理性':'你会先想清楚，再决定要不要动心。'
+};
+
+var CAT_COLOR = { '女战士':'#ff9ec8', '女性反派':'#b48cff', '女干部':'#7fb8ff' };
+var CAT_CLASS = { '女战士':'ot', '女性反派':'fan', '女干部':'cadre' };
+
+/* ============================================================
+   4. Toast / 确认框
+   ============================================================ */
+function toast(msg, duration){
+  var t = document.getElementById('__toast');
+  if(!t){
+    t = document.createElement('div');
+    t.id = '__toast';
+    t.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);'
+      + 'background:linear-gradient(135deg,rgba(255,150,200,.96),rgba(200,150,255,.96));'
+      + 'color:#fff;padding:12px 26px;border-radius:40px;font-weight:800;font-size:.9rem;'
+      + 'z-index:9999;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;'
+      + 'max-width:84%;text-align:center;box-shadow:0 10px 30px rgba(200,100,160,.4);'
+      + 'border:2px solid rgba(255,255,255,.8);';
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.style.opacity = '1';
+  t.style.transform = 'translateX(-50%) translateY(0)';
+  clearTimeout(t.__timer);
+  t.__timer = setTimeout(function(){
+    t.style.opacity = '0';
+    t.style.transform = 'translateX(-50%) translateY(-10px)';
+  }, duration || 2200);
+}
+
+function confirmDialog(msg, onOk, onCancel){
+  var mask = document.createElement('div');
+  mask.style.cssText = 'position:fixed;inset:0;background:rgba(110,60,95,.32);'
+    + 'backdrop-filter:blur(7px);display:flex;align-items:center;justify-content:center;'
+    + 'z-index:9998;padding:20px;';
+  mask.innerHTML =
+    '<div style="background:linear-gradient(180deg,#fffafd,#fff4fa);border:5px solid #fff;'
+    + 'border-radius:32px;padding:26px 22px;max-width:340px;width:100%;text-align:center;'
+    + 'box-shadow:0 28px 70px rgba(150,70,120,.3);">'
+    + '<div style="font-size:.95rem;font-weight:800;color:#5c3b52;line-height:1.7;'
+    + 'margin-bottom:20px;white-space:pre-line;">'+msg+'</div>'
+    + '<div style="display:flex;gap:10px;">'
+    + '<button id="__cOk" style="flex:1;padding:11px;border:none;border-radius:30px;'
+    + 'background:linear-gradient(135deg,#ffa0c8,#c98bff);color:#fff;font-weight:900;'
+    + 'font-size:.9rem;cursor:pointer;box-shadow:0 4px 0 rgba(180,110,170,.6);">确定</button>'
+    + '<button id="__cCancel" style="flex:1;padding:11px;border:none;border-radius:30px;'
+    + 'background:#efe6ec;color:#7a5f72;font-weight:900;font-size:.9rem;cursor:pointer;'
+    + 'box-shadow:0 4px 0 #cfbfc8;">取消</button>'
+    + '</div></div>';
+  document.body.appendChild(mask);
+  var okBtn = document.getElementById('__cOk');
+  var cancelBtn = document.getElementById('__cCancel');
+  function close(){ if(mask.parentNode) mask.parentNode.removeChild(mask); }
+  okBtn.onclick = function(){ close(); if(onOk) onOk(); };
+  cancelBtn.onclick = function(){ close(); if(onCancel) onCancel(); };
+  mask.addEventListener('click', function(e){ if(e.target === mask) close(); });
+}
+
+/* ============================================================
+   5. 音频（梦幻八音盒）
+   ============================================================ */
+var AudioSys = {
+  ctx:null, bgmGain:null, sfxGain:null,
+  bgmPlaying:false, bgmTimer:null, step:0, _nextTime:0, _stepDur:0,
+  bgmVolume:0.30, sfxVolume:0.55, bgmEnabled:true, sfxEnabled:true,
+  init:function(){
+    if(this.ctx) return;
+    var AC = window.AudioContext || window.webkitAudioContext;
+    if(!AC) return;
+    try{ this.ctx = new AC(); }catch(e){ return; }
+    this.bgmGain = this.ctx.createGain();
+    this.bgmGain.gain.value = this.bgmEnabled ? this.bgmVolume : 0;
+    this.bgmGain.connect(this.ctx.destination);
+    this.sfxGain = this.ctx.createGain();
+    this.sfxGain.gain.value = this.sfxEnabled ? this.sfxVolume : 0;
+    this.sfxGain.connect(this.ctx.destination);
+  },
+  resume:function(){ if(this.ctx && this.ctx.state === 'suspended'){ try{ this.ctx.resume(); }catch(e){} } },
+  applyVolumes:function(){
+    if(!this.ctx) return;
+    var t = this.ctx.currentTime;
+    try{
+      this.bgmGain.gain.setTargetAtTime(this.bgmEnabled ? this.bgmVolume : 0, t, 0.03);
+      this.sfxGain.gain.setTargetAtTime(this.sfxEnabled ? this.sfxVolume : 0, t, 0.03);
+    }catch(e){
+      this.bgmGain.gain.value = this.bgmEnabled ? this.bgmVolume : 0;
+      this.sfxGain.gain.value = this.sfxEnabled ? this.sfxVolume : 0;
+    }
+  },
+  playClick:function(){
+    if(!this.ctx || !this.sfxEnabled || this.sfxVolume <= 0) return;
+    this.resume();
+    var t = this.ctx.currentTime;
+    var o = this.ctx.createOscillator(), g = this.ctx.createGain();
+    o.type = 'sine';
+    o.frequency.setValueAtTime(1320, t);
+    o.frequency.exponentialRampToValueAtTime(1980, t + 0.05);
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(0.75, t + 0.006);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + 0.16);
+    o.connect(g); g.connect(this.sfxGain);
+    o.start(t); o.stop(t + 0.18);
+  },
+  tone:function(t, freq, dur, type, vol, dest){
+    if(!this.ctx) return;
+    var o = this.ctx.createOscillator(), g = this.ctx.createGain();
+    o.type = type || 'sine';
+    o.frequency.setValueAtTime(freq, t);
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(vol || 0.12, t + 0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g); g.connect(dest || this.bgmGain);
+    o.start(t); o.stop(t + dur + 0.03);
+  },
+  scheduleStep:function(step, t){
+    var bar = Math.floor(step / 16) % 4;
+    var s = step % 16;
+    var chords = [
+      [523.25, 659.25, 783.99],
+      [440.00, 523.25, 659.25],
+      [349.23, 440.00, 523.25],
+      [392.00, 493.88, 587.33]
+    ];
+    var ch = chords[bar];
+    if(s === 0){ ch.forEach(function(f){ this.tone(t, f, 1.7, 'sine', 0.055); }, this); }
+    var arp = [0,1,2,1,0,1,2,1,0,1,2,1,0,1,2,1];
+    if(s % 2 === 0){ this.tone(t, ch[arp[s]] * 2, 0.55, 'sine', 0.07); }
+    if(s === 0 || s === 8){ this.tone(t, ch[0] / 2, 0.9, 'triangle', 0.045); }
+  },
+  bgmStart:function(){
+    this.init();
+    if(!this.ctx) return;
+    this.resume();
+    if(this.bgmPlaying) return;
+    this.bgmPlaying = true;
+    this.step = 0;
+    var self = this;
+    var bpm = 82;
+    this._stepDur = 60 / bpm / 4;
+    this._nextTime = this.ctx.currentTime + 0.15;
+    this.bgmTimer = setInterval(function(){
+      if(!self.ctx || !self.bgmPlaying) return;
+      if(self._nextTime < self.ctx.currentTime - 0.3) self._nextTime = self.ctx.currentTime + 0.05;
+      var ahead = self.ctx.currentTime + 0.22;
+      var guard = 0;
+      while(self._nextTime < ahead && guard++ < 180){
+        try{ self.scheduleStep(self.step, self._nextTime); }catch(e){}
+        self._nextTime += self._stepDur; self.step++;
+      }
+    }, 60);
+  },
+  bgmStop:function(){
+    this.bgmPlaying = false;
+    if(this.bgmTimer){ clearInterval(this.bgmTimer); this.bgmTimer = null; }
+  }
+};
+
+/* ============================================================
+   6. 状态 & 工具
+   ============================================================ */
+var STORAGE_KEY = 'tokusatsu_girls_v4';
+var OLD_KEYS = ['tokusatsu_girls_v3','tokusatsu_girls_v2'];
+var SETTINGS_KEY = 'tokusatsu_girls_settings_v2';
+var ROTATION_KEY = 'tokusatsu_girls_rotation_v2';
+
+var characters = [];
+var draftImages = {};
+var currentQuestions = [];
+var currentIdx = 0;
+var answers = [];
+var isAdmin = false;
+var pendingImageIdx = -1;
+var pendingNewImage = '';
+var editingIdx = -1;
+var currentFilter = '全部';
+
+function $(id){ return document.getElementById(id); }
+function esc(s){
+  return String(s==null?'':s).replace(/[&<>"']/g,function(m){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m];
+  });
+}
+function catClass(s){ return CAT_CLASS[s] || 'ot'; }
+
+function shuffleArr(a){
+  var arr = a.slice();
+  for(var i=arr.length-1;i>0;i--){
+    var j = Math.floor(Math.random()*(i+1));
+    var tmp = arr[i]; arr[i]=arr[j]; arr[j]=tmp;
+  }
+  return arr;
+}
+function pickRandom(arr, n){ return shuffleArr(arr).slice(0, n); }
+
+/* ---------- 角色加载 & 迁移 ---------- */
+function makeChar(c){
+  return {
+    name:c.name, series:c.series, realName:c.realName, tag:c.tag,
+    traits:c.traits.slice(), category:c.category, emoji:c.emoji, img:''
+  };
+}
+
+function ensureChar(arr, name){
+  for(var i=0;i<arr.length;i++){
+    if(arr[i].name === name) return;
+  }
+  var def = null;
+  for(var d=0; d<DEFAULT_CHARS.length; d++){
+    if(DEFAULT_CHARS[d].name === name){ def = DEFAULT_CHARS[d]; break; }
+  }
+  if(!def) return;
+  var newChar = makeChar(def);
+  var anchorMap = {
+    '百万黄':'百万粉红',
+    '魔法粉':'魔法妈妈',
+    '煌辉粉':'煌辉绿'
+  };
+  var anchor = anchorMap[name];
+  var insertAt = -1;
+  if(anchor){
+    for(var j=0;j<arr.length;j++){
+      if(arr[j].name === anchor){ insertAt = j+1; break; }
+    }
+  }
+  if(insertAt > -1) arr.splice(insertAt, 0, newChar);
+  else arr.push(newChar);
+}
+
+function loadChars(){
+  var arr = null;
+  try{
+    var raw = localStorage.getItem(STORAGE_KEY);
+    if(raw){
+      var parsed = JSON.parse(raw);
+      if(Array.isArray(parsed) && parsed.length) arr = parsed;
+    }
+    if(!arr){
+      for(var oi=0; oi<OLD_KEYS.length; oi++){
+        var oldRaw = localStorage.getItem(OLD_KEYS[oi]);
+        if(oldRaw){
+          var oldArr = JSON.parse(oldRaw);
+          if(Array.isArray(oldArr) && oldArr.length){ arr = oldArr; break; }
+        }
+      }
+    }
+  }catch(e){}
+
+  if(!Array.isArray(arr) || !arr.length){
+    return DEFAULT_CHARS.map(makeChar);
+  }
+
+  /* 确保所有新增角色都存在 */
+  ensureChar(arr, '百万黄');
+  ensureChar(arr, '魔法粉');
+  ensureChar(arr, '煌辉粉');
+
+  /* 兜底：traits 是数组 */
+  for(var k=0;k<arr.length;k++){
+    if(!Array.isArray(arr[k].traits)) arr[k].traits = [];
+  }
+  return arr;
+}
+
+function saveChars(){
+  try{
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(characters));
+    return true;
+  }catch(e){
+    toast('⚠️ 本地存储空间不足！请使用更小图片或删除部分图片', 3200);
+    return false;
+  }
+}
+
+function fileToCompressedDataURL(file, maxSide, cb){
+  var reader = new FileReader();
+  reader.onload = function(ev){
+    var img = new Image();
+    img.onload = function(){
+      var w = img.width, h = img.height;
+      if(w > maxSide || h > maxSide){
+        var r = Math.min(maxSide/w, maxSide/h);
+        w = Math.round(w*r); h = Math.round(h*r);
+      }
+      var cv = document.createElement('canvas');
+      cv.width = w; cv.height = h;
+      cv.getContext('2d').drawImage(img, 0, 0, w, h);
+      try{ cb(cv.toDataURL('image/png')); }
+      catch(err){ cb(ev.target.result); }
+    };
+    img.onerror = function(){ cb(ev.target.result); };
+    img.src = ev.target.result;
+  };
+  reader.onerror = function(){ cb(''); };
+  reader.readAsDataURL(file);
+}
+
+/* ============================================================
+   7. 视图切换
+   ============================================================ */
+function showView(id){
+  var views = document.querySelectorAll('.view');
+  for(var i=0;i<views.length;i++) views[i].classList.remove('active');
+  var el = $(id);
+  if(el) el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ============================================================
+   8. 渲染
+   ============================================================ */
+function renderPeek(){
+  var wrap = $('peekWrap');
+  var html = '';
+  var list = characters.slice(0,32);
+  for(var i=0;i<list.length;i++){
+    html += '<span class="chip '+catClass(list[i].category)+'">'+esc(list[i].name)+'</span>';
+  }
+  wrap.innerHTML = html;
+}
+
+function renderRoster(){
+  var grid = $('rosterGrid');
+  var html = '';
+  var count = 0;
+  for(var i=0;i<characters.length;i++){
+    var c = characters[i];
+    if(currentFilter !== '全部' && c.category !== currentFilter) continue;
+    count++;
+    var color = CAT_COLOR[c.category] || '#ffa6cc';
+    var face = c.img ? '<img src="'+c.img+'" alt="">' : (c.emoji || '🌷');
+    html += '<div class="card" style="--c:'+color+'">'
+          +   '<div class="ph">'+face+'</div>'
+          +   '<div class="nm">'+esc(c.name)+'</div>'
+          +   '<div class="sr">'+esc(c.series)+'</div>'
+          +   (c.tag ? '<div class="tg">'+esc(c.tag)+'</div>' : '')
+          + '</div>';
+  }
+  grid.innerHTML = html || '<div style="grid-column:1/-1;text-align:center;padding:30px;color:#b393a8;font-weight:700;">这个分类下还没有角色哦～</div>';
+  $('rosterCount').textContent = '共 '+count+' 位';
+}
+
+/* ============================================================
+   9. 轮换池 + 加权随机匹配
+   ============================================================ */
+function loadRotation(){
+  try{
+    var raw = localStorage.getItem(ROTATION_KEY);
+    if(raw){
+      var obj = JSON.parse(raw);
+      return {
+        single: Array.isArray(obj.single) ? obj.single : [],
+        multiple: Array.isArray(obj.multiple) ? obj.multiple : [],
+        boolean: Array.isArray(obj.boolean) ? obj.boolean : []
+      };
+    }
+  }catch(e){}
+  return {single:[], multiple:[], boolean:[]};
+}
+function saveRotation(rot){
+  try{ localStorage.setItem(ROTATION_KEY, JSON.stringify(rot)); }catch(e){}
+}
+
+function pickFresh(bank, count, usedKeys){
+  var bankKeys = bank.map(function(q){ return q.q; });
+  var usedSet = {};
+  for(var u=0;u<usedKeys.length;u++) usedSet[usedKeys[u]] = true;
+
+  var freshIdx = [], usedIdx = [];
+  for(var i=0;i<bank.length;i++){
+    if(usedSet[bankKeys[i]]) usedIdx.push(i);
+    else freshIdx.push(i);
+  }
+  freshIdx = shuffleArr(freshIdx);
+  usedIdx = shuffleArr(usedIdx);
+
+  var picked = [];
+  var newUsed = usedKeys.slice();
+
+  for(var f=0; f<freshIdx.length && picked.length<count; f++){
+    picked.push(freshIdx[f]);
+    var k = bankKeys[freshIdx[f]];
+    if(newUsed.indexOf(k) === -1) newUsed.push(k);
+  }
+
+  if(picked.length < count){
+    newUsed = [];
+    for(var p=0;p<picked.length;p++){
+      var k2 = bankKeys[picked[p]];
+      if(newUsed.indexOf(k2) === -1) newUsed.push(k2);
+    }
+    for(var r=0; r<usedIdx.length && picked.length<count; r++){
+      picked.push(usedIdx[r]);
+      var k3 = bankKeys[usedIdx[r]];
+      if(newUsed.indexOf(k3) === -1) newUsed.push(k3);
+    }
+  }
+
+  return { picked: picked, newUsed: newUsed };
+}
+
+function buildNewTest(){
+  var rot = loadRotation();
+  var single = pickFresh(SINGLE_BANK, 10, rot.single);
+  var multi  = pickFresh(MULTI_BANK, 5, rot.multiple);
+  var bool   = pickFresh(BOOL_BANK, 10, rot.boolean);
+
+  rot.single = single.newUsed;
+  rot.multiple = multi.newUsed;
+  rot.boolean = bool.newUsed;
+  saveRotation(rot);
+
+  var singles = single.picked.map(function(i){
+    var q = SINGLE_BANK[i];
+    return {type:'single', q:q.q, opts:q.opts};
+  });
+  var multis = multi.picked.map(function(i){
+    var q = MULTI_BANK[i];
+    return {type:'multiple', q:q.q, opts:q.opts};
+  });
+  var bools = bool.picked.map(function(i){
+    var q = BOOL_BANK[i];
+    return {type:'boolean', q:q.q, opts:q.opts};
+  });
+
+  return singles.concat(multis).concat(bools);
+}
+
+/* ---------- 加权随机抽选：每个角色都有机会，匹配度高的权重更大 ---------- */
+function pickWeighted(pool, score){
+  var weights = [];
+  var total = 0;
+  for(var i=0;i<pool.length;i++){
+    var tr = pool[i].traits || [];
+    var sum = 0;
+    for(var t=0;t<tr.length;t++) sum += (score[tr[t]] || 0);
+    var normalized = tr.length ? sum / Math.sqrt(tr.length) : 0;
+    var w = 3 + normalized * 0.6;
+    if(w < 0.5) w = 0.5;
+    weights.push(w);
+    total += w;
+  }
+  var r = Math.random() * total;
+  var acc = 0;
+  for(var j=0;j<pool.length;j++){
+    acc += weights[j];
+    if(r <= acc) return pool[j];
+  }
+  return pool[pool.length-1];
+}
+
+/* ============================================================
+   10. 答题
+   ============================================================ */
+function renderQuestion(){
+  var q = currentQuestions[currentIdx];
+  var total = currentQuestions.length;
+
+  $('progressText').textContent = '第 '+(currentIdx+1)+' / '+total+' 题';
+  $('typeTag').textContent = q.type==='single' ? '单选题' : (q.type==='multiple' ? '多选题' : '是/否题');
+  $('progressBar').style.width = ((currentIdx)/total*100).toFixed(1)+'%';
+  $('qText').textContent = q.q;
+  $('multiTip').style.display = (q.type==='multiple') ? 'block' : 'none';
+
+  var saved = answers[currentIdx];
+  var box = $('options');
+  box.innerHTML = '';
+
+  for(var i=0;i<q.opts.length;i++){
+    (function(i){
+      var opt = q.opts[i];
+      var div = document.createElement('div');
+      div.className = 'option';
+      if(q.type==='multiple'){
+        if(Array.isArray(saved) && saved.indexOf(i) > -1) div.classList.add('sel-multi');
+      }else{
+        if(saved === i) div.classList.add('sel');
+      }
+      var markText = (q.type==='boolean') ? '•' : String.fromCharCode(65+i);
+      div.innerHTML = '<span class="mark">'+markText+'</span><span class="opt-text">'+esc(opt.t)+'</span>';
+
+      div.addEventListener('click', function(){
+        AudioSys.playClick();
+        if(q.type === 'multiple'){
+          var cur = answers[currentIdx];
+          if(!Array.isArray(cur)) cur = [];
+          else cur = cur.slice();
+          var pos = cur.indexOf(i);
+          if(pos > -1) cur.splice(pos,1);
+          else cur.push(i);
+          answers[currentIdx] = cur;
+          renderQuestion();
+        }else{
+          answers[currentIdx] = i;
+          var all = box.querySelectorAll('.option');
+          for(var k=0;k<all.length;k++) all[k].classList.remove('sel');
+          div.classList.add('sel');
+          var goIdx = currentIdx;
+          setTimeout(function(){
+            if(currentIdx !== goIdx) return;
+            if(currentIdx < total-1){ currentIdx++; renderQuestion(); }
+            else{ calculateResult(); }
+          }, 220);
+        }
+      });
+      box.appendChild(div);
+    })(i);
+  }
+  $('prevBtn').disabled = (currentIdx === 0);
+  $('nextBtn').textContent = (currentIdx === total-1) ? '✨ 查看结果' : '下一题 ▶';
+}
+
+/* ============================================================
+   11. 结果计算（加权随机）
+   ============================================================ */
+function calculateResult(){
+  for(var i=0;i<currentQuestions.length;i++){
+    var a = answers[i];
+    if(a === null || a === undefined || (Array.isArray(a) && a.length === 0)){
+      toast('第 '+(i+1)+' 题还没有作答哦～', 1800);
+      currentIdx = i;
+      renderQuestion();
+      return;
+    }
+  }
+
+  var score = {};
+  function addWeight(w){
+    if(!w) return;
+    for(var k in w){ score[k] = (score[k] || 0) + w[k]; }
+  }
+  for(var qi=0; qi<currentQuestions.length; qi++){
+    var q = currentQuestions[qi];
+    var ans = answers[qi];
+    if(q.type === 'multiple'){
+      for(var m=0;m<ans.length;m++) addWeight(q.opts[ans[m]].w);
+    }else{
+      addWeight(q.opts[ans].w);
+    }
+  }
+
+  var pool = characters.filter(function(c){ return c.traits && c.traits.length; });
+  if(!pool.length) pool = characters.slice();
+  if(!pool.length){ toast('角色库为空，请先在管理员后台添加角色'); return; }
+
+  var best = pickWeighted(pool, score);
+
+  var imgBox = $('resImg');
+  if(best.img) imgBox.innerHTML = '<img src="'+best.img+'" alt="">';
+  else imgBox.textContent = best.emoji || '🌷';
+
+  $('resName').textContent = best.name;
+  $('resReal').textContent = (best.realName && best.realName !== '—') ? '变身者 / 本名：'+best.realName : '';
+  $('resSeries').textContent = best.series || '超级战队';
+  $('resCat').textContent = best.category || '';
+
+  var tagsBox = $('resTags');
+  tagsBox.innerHTML = '';
+  (best.traits || []).forEach(function(t){
+    var s = document.createElement('span');
+    s.className = 'res-tag';
+    s.textContent = t;
+    tagsBox.appendChild(s);
+  });
+
+  $('resDesc').textContent = buildDesc(best);
+  $('progressBar').style.width = '100%';
+  showView('resultView');
+}
+
+function buildDesc(char){
+  var tr = char.traits || [];
+  var parts = ['你和「'+char.name+'」的灵魂契合度最高！'];
+  var shown = 0;
+  for(var i=0;i<tr.length && shown<4;i++){
+    if(TRAIT_TEXT[tr[i]]){ parts.push(TRAIT_TEXT[tr[i]]); shown++; }
+  }
+  var catLine = '';
+  if(char.category === '女性反派'){
+    catLine = '你身上藏着一股危险又迷人的气质——温柔的时候是花，燃烧起来是火。你从不掩饰自己的欲望，也从不害怕被看见。';
+  }else if(char.category === '女干部'){
+    catLine = '你不是那种站在最前面的人，但你永远是不可或缺的那一个。优雅、清醒、有分寸感，是你最强的武器。';
+  }else{
+    catLine = '在战队里，你会是那种让人一眼就记住的女孩。你有自己的光，也愿意把光分给别人。';
+  }
+  parts.push(catLine);
+  if(char.tag) parts.push('在原作里，她是这样的——'+char.tag+'。');
+  parts.push('所以，如果来到超级战队的世界，你会成为「'+char.name+'」这样的女孩子。');
+  return parts.join('');
+}
+
+/* ============================================================
+   12. 管理员
+   ============================================================ */
+function renderAdminTable(){
+  var tb = $('adminTbody');
+  var html = '';
+  for(var i=0;i<characters.length;i++){
+    var c = characters[i];
+    var hasDraft = (draftImages[i] !== undefined);
+    var showImg = hasDraft ? draftImages[i] : c.img;
+    var face = showImg ? '<img src="'+showImg+'" alt="">' : (c.emoji || '🌷');
+    html += '<tr>'
+          +   '<td><div class="th">' + face
+          +     (hasDraft ? '<span class="draft-badge">待保存</span>' : '')
+          +   '</div></td>'
+          +   '<td class="cell-nm">'+esc(c.name)+(c.tag ? '<small>'+esc(c.tag)+'</small>' : '')+'</td>'
+          +   '<td><span class="pill">'+esc(c.category||'')+'</span><br><span class="pill" style="margin-top:3px;display:inline-block;">'+esc(c.series||'')+'</span></td>'
+          +   '<td><div class="op-cell">'
+          +     '<button class="mini-btn img" data-act="img" data-idx="'+i+'">图片</button>'
+          +     '<button class="mini-btn edit" data-act="edit" data-idx="'+i+'">编辑</button>'
+          +     '<button class="mini-btn del" data-act="del" data-idx="'+i+'">删除</button>'
+          +   '</div></td>'
+          + '</tr>';
+  }
+  tb.innerHTML = html;
+  updateSaveBtnState();
+}
+
+function updateSaveBtnState(){
+  var n = Object.keys(draftImages).length;
+  var btn = $('saveImgBtn');
+  if(!btn) return;
+  if(n > 0){
+    btn.textContent = '💾 保存图片修改 ('+n+')';
+    btn.classList.add('has-draft');
+  }else{
+    btn.textContent = '💾 保存图片修改';
+    btn.classList.remove('has-draft');
+  }
+}
+
+$('adminTbody').addEventListener('click', function(e){
+  var btn = e.target.closest('button');
+  if(!btn) return;
+  var act = btn.getAttribute('data-act');
+  var idx = parseInt(btn.getAttribute('data-idx'),10);
+  if(isNaN(idx)) return;
+
+  if(act === 'del'){
+    var c = characters[idx];
+    if(!c) return;
+    confirmDialog('确定要删除「'+c.name+'」吗？\n此操作不可撤销。', function(){
+      characters.splice(idx,1);
+      var nd = {};
+      for(var k in draftImages){
+        var ki = parseInt(k,10);
+        if(ki === idx) continue;
+        if(ki > idx) nd[ki-1] = draftImages[k];
+        else nd[ki] = draftImages[k];
+      }
+      draftImages = nd;
+      if(saveChars()){
+        renderAdminTable(); renderRoster(); renderPeek();
+        toast('✅ 已删除「'+c.name+'」');
+      }
+    });
+  }else if(act === 'img'){
+    pendingImageIdx = idx;
+    $('hiddenFile').value = '';
+    $('hiddenFile').click();
+  }else if(act === 'edit'){
+    editingIdx = idx;
+    var ch = characters[idx];
+    $('editName').value = ch.name || '';
+    $('editSeries').value = ch.series || '';
+    $('editReal').value = ch.realName || '';
+    $('editTag').value = ch.tag || '';
+    $('editModal').classList.add('on');
+    setTimeout(function(){ $('editName').focus(); }, 80);
+  }
+});
+
+$('hiddenFile').addEventListener('change', function(){
+  var f = this.files && this.files[0];
+  if(!f) return;
+  if(pendingImageIdx < 0 || !characters[pendingImageIdx]) return;
+  var targetIdx = pendingImageIdx;
+  pendingImageIdx = -1;
+  fileToCompressedDataURL(f, 240, function(dataURL){
+    if(!dataURL){ toast('❌ 图片读取失败，请换一张试试'); return; }
+    draftImages[targetIdx] = dataURL;
+    renderAdminTable();
+    toast('📸 已加入预览，记得点保存！', 2200);
+  });
+});
+
+$('saveImgBtn').addEventListener('click', function(){
+  var keys = Object.keys(draftImages);
+  if(keys.length === 0){
+    toast('📷 目前没有待保存的图片修改，请先上传');
+    return;
+  }
+  var count = 0;
+  for(var k=0;k<keys.length;k++){
+    var idx = parseInt(keys[k],10);
+    if(characters[idx]){
+      characters[idx].img = draftImages[keys[k]];
+      count++;
+    }
+  }
+  if(saveChars()){
+    draftImages = {};
+    renderAdminTable(); renderRoster();
+    toast('✅ 已保存 '+count+' 张图片，图鉴头像已更新！', 2400);
+  }
+});
+
+$('editCancel').addEventListener('click', function(){
+  $('editModal').classList.remove('on');
+  editingIdx = -1;
+});
+
+$('editSave').addEventListener('click', function(){
+  if(editingIdx < 0 || !characters[editingIdx]){
+    $('editModal').classList.remove('on');
+    return;
+  }
+  var name = $('editName').value.trim();
+  var series = $('editSeries').value.trim();
+  var real = $('editReal').value.trim();
+  var tag = $('editTag').value.trim();
+  if(!name){ toast('角色名不能为空'); $('editName').focus(); return; }
+  if(!series){ toast('战队/作品不能为空'); $('editSeries').focus(); return; }
+
+  characters[editingIdx].name = name;
+  characters[editingIdx].series = series;
+  characters[editingIdx].realName = real || '—';
+  characters[editingIdx].tag = tag;
+
+  if(saveChars()){
+    $('editModal').classList.remove('on');
+    editingIdx = -1;
+    renderAdminTable(); renderRoster(); renderPeek();
+    toast('✅ 已保存修改');
+  }
+});
+
+$('editModal').addEventListener('click', function(e){
+  if(e.target === this){ this.classList.remove('on'); editingIdx = -1; }
+});
+
+$('newImgFile').addEventListener('change', function(){
+  var f = this.files && this.files[0];
+  if(!f){ pendingNewImage=''; $('newImgState').textContent='未选择'; return; }
+  $('newImgState').textContent = '读取中…';
+  fileToCompressedDataURL(f, 240, function(dataURL){
+    pendingNewImage = dataURL || '';
+    $('newImgState').textContent = pendingNewImage ? '已选择 ✓' : '读取失败';
+  });
+});
+
+$('addBtn').addEventListener('click', function(){
+  var name = $('newName').value.trim();
+  var series = $('newSeries').value.trim();
+  var real = $('newReal').value.trim();
+  var tag = $('newTag').value.trim();
+  var cat = $('newCat').value;
+  if(!name){ toast('请填写角色名'); $('newName').focus(); return; }
+  if(!series){ toast('请填写战队/作品'); $('newSeries').focus(); return; }
+
+  var emojiMap = { '女战士':'🌷', '女性反派':'🌙', '女干部':'🦋' };
+  characters.push({
+    name:name, series:series, realName:real || '—', tag:tag,
+    category:cat, emoji:emojiMap[cat] || '🌷', traits:[], img:pendingNewImage || ''
+  });
+
+  if(saveChars()){
+    renderAdminTable(); renderRoster(); renderPeek();
+    $('newName').value = '';
+    $('newSeries').value = '';
+    $('newReal').value = '';
+    $('newTag').value = '';
+    $('newImgFile').value = '';
+    $('newImgState').textContent = '未选择';
+    pendingNewImage = '';
+    toast('✅ 已添加：'+name);
+  }
+});
+
+/* ============================================================
+   13. 声音设置
+   ============================================================ */
+function loadSettings(){
+  try{
+    var raw = localStorage.getItem(SETTINGS_KEY);
+    if(!raw) return;
+    var s = JSON.parse(raw);
+    if(typeof s.bgmEnabled === 'boolean') AudioSys.bgmEnabled = s.bgmEnabled;
+    if(typeof s.sfxEnabled === 'boolean') AudioSys.sfxEnabled = s.sfxEnabled;
+    if(typeof s.bgmVolume === 'number') AudioSys.bgmVolume = s.bgmVolume;
+    if(typeof s.sfxVolume === 'number') AudioSys.sfxVolume = s.sfxVolume;
+  }catch(e){}
+}
+function persistSettings(){
+  try{
+    localStorage.setItem(SETTINGS_KEY, JSON.stringify({
+      bgmEnabled: AudioSys.bgmEnabled, sfxEnabled: AudioSys.sfxEnabled,
+      bgmVolume: AudioSys.bgmVolume, sfxVolume: AudioSys.sfxVolume
+    }));
+  }catch(e){}
+}
+function syncSettingsUI(){
+  $('bgmToggle').checked = AudioSys.bgmEnabled;
+  $('sfxToggle').checked = AudioSys.sfxEnabled;
+  $('bgmVol').value = Math.round(AudioSys.bgmVolume * 100);
+  $('sfxVol').value = Math.round(AudioSys.sfxVolume * 100);
+}
+loadSettings();
+syncSettingsUI();
+
+$('settingsFab').addEventListener('click', function(e){
+  e.stopPropagation();
+  $('settingsPanel').classList.toggle('on');
+  AudioSys.init(); AudioSys.resume();
+  if(AudioSys.bgmEnabled && AudioSys.ctx && !AudioSys.bgmPlaying) AudioSys.bgmStart();
+});
+$('setClose').addEventListener('click', function(){ $('settingsPanel').classList.remove('on'); });
+document.addEventListener('click', function(e){
+  var p = $('settingsPanel');
+  if(!p.classList.contains('on')) return;
+  if(p.contains(e.target) || e.target === $('settingsFab')) return;
+  p.classList.remove('on');
+});
+$('bgmToggle').addEventListener('change', function(){
+  AudioSys.init();
+  AudioSys.bgmEnabled = this.checked;
+  if(AudioSys.bgmEnabled){ AudioSys.bgmStart(); AudioSys.applyVolumes(); }
+  else{ AudioSys.bgmStop(); AudioSys.applyVolumes(); }
+  persistSettings();
+});
+$('bgmVol').addEventListener('input', function(){
+  AudioSys.bgmVolume = parseInt(this.value,10)/100;
+  AudioSys.applyVolumes(); persistSettings();
+});
+$('sfxToggle').addEventListener('change', function(){
+  AudioSys.init();
+  AudioSys.sfxEnabled = this.checked;
+  AudioSys.applyVolumes(); persistSettings();
+  if(AudioSys.sfxEnabled) AudioSys.playClick();
+});
+$('sfxVol').addEventListener('input', function(){
+  AudioSys.sfxVolume = parseInt(this.value,10)/100;
+  AudioSys.applyVolumes(); persistSettings();
+});
+$('sfxVol').addEventListener('change', function(){
+  if(AudioSys.sfxEnabled) AudioSys.playClick();
+});
+
+/* ============================================================
+   14. 主流程
+   ============================================================ */
+var ADMIN_USER = 'admin';
+var ADMIN_PASS = 'admin123';
+
+$('adminEntryBtn').addEventListener('click', function(){
+  if(isAdmin){ showView('adminView'); renderAdminTable(); }
+  else{
+    $('admPass').value = '';
+    $('loginModal').classList.add('on');
+    setTimeout(function(){ $('admUser').focus(); }, 50);
+  }
+});
+
+$('loginCancel').addEventListener('click', function(){
+  $('loginModal').classList.remove('on');
+  $('admPass').value = '';
+});
+
+$('loginOk').addEventListener('click', function(){
+  var u = $('admUser').value.trim();
+  var p = $('admPass').value;
+  if(u === ADMIN_USER && p === ADMIN_PASS){
+    isAdmin = true;
+    $('loginModal').classList.remove('on');
+    $('admUser').value = '';
+    $('admPass').value = '';
+    showView('adminView');
+    renderAdminTable();
+    toast('👑 欢迎回来，管理员');
+  }else{
+    isAdmin = false;
+    $('admPass').value = '';
+    $('admPass').focus();
+    toast('❌ 账号或密码错误，请重试', 2400);
+  }
+});
+
+$('admPass').addEventListener('keydown', function(e){
+  if(e.key === 'Enter'){ e.preventDefault(); $('loginOk').click(); }
+});
+$('admUser').addEventListener('keydown', function(e){
+  if(e.key === 'Enter'){ e.preventDefault(); $('admPass').focus(); }
+});
+
+$('loginModal').addEventListener('click', function(e){
+  if(e.target === this){ this.classList.remove('on'); $('admPass').value = ''; }
+});
+
+$('adminLogout').addEventListener('click', function(){
+  var n = Object.keys(draftImages).length;
+  if(n > 0){
+    confirmDialog('还有 '+n+' 张图片未保存，确定要退出吗？', function(){
+      draftImages = {};
+      isAdmin = false;
+      showView('homeView');
+      toast('已退出管理员模式');
+    });
+  }else{
+    isAdmin = false;
+    showView('homeView');
+    toast('已退出管理员模式');
+  }
+});
+
+$('startBtn').addEventListener('click', function(){
+  AudioSys.init(); AudioSys.resume();
+  if(AudioSys.bgmEnabled && !AudioSys.bgmPlaying) AudioSys.bgmStart();
+  currentQuestions = buildNewTest();
+  currentIdx = 0;
+  answers = new Array(currentQuestions.length).fill(null);
+  renderQuestion();
+  showView('quizView');
+});
+
+$('rosterBtn').addEventListener('click', function(){ renderRoster(); showView('rosterView'); });
+$('peekMore').addEventListener('click', function(){ renderRoster(); showView('rosterView'); });
+$('rosterBack').addEventListener('click', function(){ showView('homeView'); });
+
+$('filterRow').addEventListener('click', function(e){
+  var btn = e.target.closest('.filter-btn');
+  if(!btn) return;
+  AudioSys.playClick();
+  var all = this.querySelectorAll('.filter-btn');
+  for(var i=0;i<all.length;i++) all[i].classList.remove('on');
+  btn.classList.add('on');
+  currentFilter = btn.getAttribute('data-cat');
+  renderRoster();
+});
+
+$('prevBtn').addEventListener('click', function(){ if(currentIdx > 0){ currentIdx--; renderQuestion(); } });
+$('nextBtn').addEventListener('click', function(){
+  var a = answers[currentIdx];
+  var empty = (a === null || a === undefined || (Array.isArray(a) && a.length === 0));
+  if(empty){ toast('请先回答本题哦～', 1600); return; }
+  if(currentIdx < currentQuestions.length - 1){ currentIdx++; renderQuestion(); }
+  else{ calculateResult(); }
+});
+
+$('quizBackBtn').addEventListener('click', function(){ showView('homeView'); });
+
+$('againBtn').addEventListener('click', function(){
+  currentQuestions = buildNewTest();
+  currentIdx = 0;
+  answers = new Array(currentQuestions.length).fill(null);
+  renderQuestion();
+  showView('quizView');
+});
+$('homeBtn').addEventListener('click', function(){ showView('homeView'); });
+
+/* ============================================================
+   15. 启动
+   ============================================================ */
+characters = loadChars();
+renderPeek();
+renderRoster();
+
+var audioUnlocked = false;
+function unlockAudio(){
+  if(audioUnlocked) return;
+  audioUnlocked = true;
+  AudioSys.init();
+  if(AudioSys.ctx){
+    AudioSys.resume();
+    AudioSys.applyVolumes();
+    if(AudioSys.bgmEnabled) AudioSys.bgmStart();
+  }
+  document.removeEventListener('pointerdown', unlockAudio);
+  document.removeEventListener('keydown', unlockAudio);
+}
+document.addEventListener('pointerdown', unlockAudio);
+document.addEventListener('keydown', unlockAudio);
+
+})();
+</script>
+</body>
+</html>
